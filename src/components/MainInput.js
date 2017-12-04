@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ResultList from './ResultList';
 
 class MainInput extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class MainInput extends Component {
             className="validate"
           />
         </form>
+        <ResultList list={[]} />
       </div>
     );
   }
