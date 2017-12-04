@@ -1,8 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+
 import './index.css';
-import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from './components/App';
+import MainInput from './components/MainInput';
+
+const Root = () => (
+  <Router history={hashHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={MainInput} />
+      {/* other route tags here */}
+    </Route>
+  </Router>
+);
+
+render(<Root />, document.getElementById('root'));
 registerServiceWorker();
