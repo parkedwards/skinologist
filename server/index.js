@@ -5,9 +5,9 @@ const cors = require('cors');
 const colors = require('colors');
 // const path = require('path');
 
-// if (process.env.NODE_ENV === 'dev') {
-//   require('dotenv').config();
-// }
+if (process.env.NODE_ENV === 'dev') {
+  require('dotenv').config();
+}
 
 const PORT = process.env.PORT || 3000;
 
