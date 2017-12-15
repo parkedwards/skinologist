@@ -1,8 +1,15 @@
 const { Router } = require('express');
-const ingredientRoutes = require('./services/ingredients/routes');
 
 const api = new Router();
 
-api.get('/ingredients', ingredientRoutes);
+api.get('/ingredients', (req, res) => {
+  console.log('inside of GET /ingredients');
+});
+
+api.get('/search/?', (req, res, next) => {
+  if (!req.query.term) {
+    next();
+  }
+});
 
 module.exports = api;

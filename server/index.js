@@ -2,12 +2,12 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const colors = require('colors');
-// const path = require('path');
+require('colors');
+require('./db');
 
-// if (process.env.NODE_ENV === 'dev') {
-//   require('dotenv').config();
-// }
+if (process.env.NODE_ENV === 'dev') {
+  require('dotenv').config();
+}
 
 const PORT = process.env.PORT || 3000;
 
