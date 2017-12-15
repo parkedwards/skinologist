@@ -28,7 +28,13 @@ class MainInput extends Component {
             className="validate"
           />
         </form>
-        <ResultList list={[]} />
+        <ResultList
+          list={[
+            { title: 'Acetometphin' },
+            { title: 'Ibuprofen' },
+            { title: 'Oxycotin' },
+          ]}
+        />
       </div>
     );
   }
