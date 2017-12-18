@@ -10,6 +10,7 @@ import configureStore from './utils/configureStore';
 
 import App from './components/App';
 import MainInput from './components/MainInput';
+import IngredientDetail from './components/IngredientDetail';
 
 const store = configureStore();
 
@@ -18,6 +19,7 @@ const Root = () => (
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={MainInput} />
+        <Route path="detail/:id" component={IngredientDetail} />
         {/* other route tags here */}
       </Route>
     </Router>
