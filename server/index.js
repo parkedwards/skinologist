@@ -22,5 +22,5 @@ app.all('*', (req, res) => res.status(404).end('Page Not Found'));
 
 // check out grider's express setup in Lyrical-GraphQL
 app.listen(PORT, () => {
-  console.log(`SKINOLOGY is up and running on port ${PORT}`.bold.bgWhite.cyan);
+  console.log(`SKINOLOGY is up and running on port ${PORT}`.bold.bgWhite.blue);
 });
