@@ -6,7 +6,7 @@ import { debounce } from 'lodash';
 import ResultList from './ResultList';
 import { update_search_field, search_term } from '../actions/search';
 
-const MainInput = props => (
+const Search = props => (
   <div className="input-field">
     <form onSubmit={e => e.preventDefault()}>
       <label htmlFor="main-input">Enter an ingredient:</label>
@@ -44,10 +44,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainInput);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
 // type checking:
-MainInput.propTypes = {
+Search.propTypes = {
   search: PropTypes.string.isRequired,
   onFieldUpdate: PropTypes.func.isRequired,
   matches: PropTypes.arrayOf(PropTypes.string).isRequired,

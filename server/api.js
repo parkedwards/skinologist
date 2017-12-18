@@ -1,20 +1,18 @@
 const { Router } = require('express');
 const Sifter = require('sifter');
 
-const terms = [
-  { name: 'Aloe Vera', id: 1 },
-  { name: 'Alpha Hydroxy Acids (AHA)', id: 2 },
-  { name: 'Alpha Lipoic Acid (ALA)', id: 3 },
-  { name: 'Azelaic Acid', id: 4 },
-  { name: 'Beta Hydroxy Acid (BHA)', id: 5 },
-  { name: 'Biotin (Vitamin B7)', id: 6 },
-  { name: 'Evening Primrose Oil', id: 7 },
-  { name: 'Vitamin K', id: 8 },
-  { name: 'Vitamin E', id: 9 },
-  { name: 'Tea Tree Oil', id: 10 },
-];
+// placeholder stuff
+const path = require('path');
+const fs = require('fs');
+const { promisify } = require('util');
 
-const sifter = new Sifter(terms);
+let data;
+let sifter;
+(async () => {
+  const readFile = promisify(fs.readFile);
+  data = JSON.parse(await readFile(path.join(__dirname, '../data.json')), 'utf8');
+  sifter = new Sifter(data);
+})();
 
 const api = new Router();
 
@@ -34,12 +32,12 @@ api.get('/search/?', (req, res, next) => {
   }
 
   const { items: scores } = sifter.search(searchTerm, {
-    fields: ['name'],
+    fields: ['Name'],
     sort: [{ field: 'name', direction: 'asc' }],
     limit: 100,
   });
 
-  const results = scores.map(score => terms[score.id]);
+  const results = scores.map(score => data[score.id]);
 
   return res.status(200).json(results);
 });
