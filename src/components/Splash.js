@@ -3,7 +3,7 @@ import { Wrapper } from './Splash.styles';
 
 class Splash extends Component {
   static onScrollClick() {
-    const el = document.getElementsByClassName('input-field')[0];
+    const el = document.getElementById('search-section');
     el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 

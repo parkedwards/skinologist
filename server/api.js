@@ -34,6 +34,7 @@ api.get('/search/?', (req, res, next) => {
   const { items: scores } = sifter.search(searchTerm, {
     fields: ['Name'],
     sort: [{ field: 'name', direction: 'asc' }],
+    conjunction: 'and',
     limit: 100,
   });
 

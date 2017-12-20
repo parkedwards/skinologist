@@ -3,23 +3,24 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 
+import { Wrapper, MainInput } from './Search.styles';
+
 import ResultList from './ResultList';
 import { update_search_field, search_term } from '../actions/search';
 
+// consider using materialize Input CSS + customize the colors
 const Search = props => (
-  <div className="input-field">
-    <form onSubmit={e => e.preventDefault()}>
-      <label htmlFor="main-input">Enter an ingredient:</label>
-      <input
-        id="main-input"
-        type="text"
-        onChange={props.onFieldUpdate}
-        value={props.search}
-        className="validate"
-      />
-    </form>
+  <Wrapper id="search-section">
+    <MainInput
+      id="main-input"
+      type="text"
+      onChange={props.onFieldUpdate}
+      value={props.search}
+      className="validate"
+      placeholder="SEARCH"
+    />
     <ResultList results={props.matches} search={props.search} />
-  </div>
+  </Wrapper>
 );
 
 const mapStateToProps = state => {
