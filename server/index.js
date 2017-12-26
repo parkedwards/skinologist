@@ -5,7 +5,7 @@ const cors = require('cors');
 
 require('dotenv').config();
 require('colors');
-require('./db');
+require('./db'); // maybe move this to controller module
 
 const PORT = process.env.PORT || 3000;
 

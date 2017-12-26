@@ -1,6 +1,6 @@
 const pg = require('pg');
 const config = require('./config');
-console.log(config);
+
 const pool = new pg.Pool(config);
 
 pool.connect(err => {

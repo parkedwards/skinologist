@@ -17,10 +17,12 @@ class Splash extends Component {
           <strong>my</strong> skinologist
         </h3>
         <i
+          role="button"
+          tabIndex={0}
           className="material-icons"
           id="scroll-indicator"
           onClick={Splash.onScrollClick}
-          onKeyDown={Splash.onScrollClick}
+          // onKeyDown={Splash.onScrollClick}
         >
           keyboard_arrow_down
         </i>
