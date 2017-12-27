@@ -4,9 +4,7 @@
     "sourceType": "module",
     "allowImportExportEverywhere": true
   },
-  "extends": [
-    "airbnb"
-  ],
+  "extends": ["airbnb"],
   "env": {
     "browser": true,
     "mocha": true,
@@ -14,19 +12,13 @@
     "jest": true
   },
   "root": true,
-  "plugins": [
-    "react",
-    "jsx-a11y",
-    "import"
-  ],
+  "plugins": ["react", "jsx-a11y", "import"],
   "rules": {
     "quotes": 2,
     "no-underscore-dangle": 0,
     "camelcase": 0,
     "max-len": 0,
-    "arrow-parens": [
-      "off"
-    ],
+    "arrow-parens": ["off"],
     "no-trailing-spaces": [
       2,
       {
@@ -44,10 +36,15 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight", "to"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
       }
     ]
   }
