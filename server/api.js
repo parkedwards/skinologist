@@ -45,7 +45,7 @@ api.get(
   },
   fetchItemsFromCache,
   queryDB,
-  searchKeyword,
+  sendResult,
 );
 
 module.exports = api;
@@ -54,7 +54,7 @@ function fetchItemsFromCache(req, res, next) {
   // const searchTerm = req.query.term;
   const ingredientsList = 'ingredientsList';
   redis_client.get(ingredientsList, (err, cachedData) => {
-    if (err) console.log(err);
+    if (err) console.log(err); // it's ok to pass through to query DB if error with redis retrieve
     if (cachedData != null) res.locals.ingredients = cachedData;
     next();
   });
@@ -70,8 +70,9 @@ function queryDB(req, res, next) {
   next();
 }
 
-function searchKeyword(req, res, next) {
+function sendResult(req, res, next) {
   const searchTerm = req.query.term;
+
   const { items: scores } = sifter.search(searchTerm, {
     fields: ['Name'],
     sort: [{ field: 'name', direction: 'asc' }],
