@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Wrapper } from './Splash.styles';
 
 class Splash extends Component {
-  static onScrollClick() {
+  static onScrollClick = () => {
     const el = document.getElementById('search-section');
     el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
@@ -22,7 +22,7 @@ class Splash extends Component {
           className="material-icons"
           id="scroll-indicator"
           onClick={Splash.onScrollClick}
-          // onKeyDown={Splash.onScrollClick}
+          onKeyDown={Splash.onScrollClick} // placeholder
         >
           keyboard_arrow_down
         </i>

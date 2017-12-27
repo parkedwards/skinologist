@@ -51,5 +51,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(Search);
 Search.propTypes = {
   search: PropTypes.string.isRequired,
   onFieldUpdate: PropTypes.func.isRequired,
-  matches: PropTypes.arrayOf(PropTypes.string).isRequired,
+  matches: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

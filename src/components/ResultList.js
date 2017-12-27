@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
 class ResultList extends Component {
-  renderResults() {
+  static propTypes = {
+    results: PropTypes.arrayOf(PropTypes.object).isRequired,
+    search: PropTypes.string.isRequired,
+  };
+
+  renderResults = () => {
     // {{ TODO: }}
     // result array will look diff, with ID info etc.
     // make sure to map properly when that is in place
     const { results } = this.props;
-    return results.map(result => <li>{result.Name[0]}</li>);
-  }
+    return results.map((result, i) => (
+      <li key={result.Name}>
+        <Link to={`/detail/${i}`}>{result.Name}</Link>
+      </li>
+    ));
+  };
 
   render() {
     const { results, search } = this.props;
@@ -26,8 +36,3 @@ class ResultList extends Component {
 }
 
 export default ResultList;
-
-ResultList.propTypes = {
-  results: PropTypes.arrayOf(PropTypes.string).isRequired,
-  search: PropTypes.string.isRequired,
-};
