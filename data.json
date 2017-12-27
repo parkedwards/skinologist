@@ -1,14 +1,18 @@
 [
   {
-    "Name": [
-      "Aloe Vera"
-    ],
-    "Tags": [
-      "Hydration",
+    "Name": "Aloe Vera",
+    "Symptoms": [
+      "Dryness",
       "Sun damage"
     ],
+    "Product Category": [
+      "Antioxidant",
+      "Anti-inflammatory",
+      "Anti-bacterial"
+    ],
     "What is it?": [
-      "Comprised of two hormones (Auxin and Gibberellins) which provides wound healing and anti-inflammatory properties",
+      "Cactus plant that belongs to the Liliaceae family",
+      "Contains two hormones (Auxin and Gibberellins) which provides wound healing and anti-inflammatory properties",
       "Contains other antioxidants including, beta carotene, vitamin C and E"
     ],
     "Key Benefits": [
@@ -18,15 +22,22 @@
     ],
     "Side Effects": [
       "None"
+    ],
+    "When / How to Wear?": [
+      "Apply a thin layer immediately following sun damage"
+    ],
+    "Who can use it?": [
+      "Anyone"
     ]
   },
   {
-    "Name": [
-      "Alpha Hydroxy Acids (AHA)"
+    "Name": "Alpha Hydroxy Acids (AHA)",
+    "Symptoms": [
+      "Anti-aging",
+      "Dullness"
     ],
-    "Tags": [
-      "Exfoliant",
-      "Anti-aging"
+    "Product Category": [
+      "Acid"
     ],
     "What is it?": [
       "Water loving and water soluble acid"
@@ -50,11 +61,12 @@
     ]
   },
   {
-    "Name": [
-      "Alpha Lipoic Acid (ALA)"
+    "Name": "Alpha Lipoic Acid (ALA)",
+    "Symptoms": [
+      "Dullness"
     ],
-    "Tags": [
-      "Exfoliant"
+    "Product Category": [
+      "Acid"
     ],
     "What is it?": [
       "Antioxidant enzyme soluable both in water and fat that can easily penetrate the skin"
@@ -81,19 +93,21 @@
     ]
   },
   {
-    "Name": [
-      "Azelaic Acid"
+    "Name": "Azelaic Acid",
+    "Symptoms": [
+      "Acid"
     ],
-    "Tags": [
+    "Product Category": [
       "Acid"
     ]
   },
   {
-    "Name": [
-      "Benzoyl Peroxide"
-    ],
-    "Tags": [
+    "Name": "Benzoyl Peroxide",
+    "Symptoms": [
       "Acne"
+    ],
+    "Product Category": [
+      "Acid"
     ],
     "What is it?": [
       ""
@@ -104,12 +118,13 @@
     ]
   },
   {
-    "Name": [
-      "Beta Hydroxy Acid (BHA)"
+    "Name": "Beta Hydroxy Acid (BHA)",
+    "Symptoms": [
+      "Acne",
+      "Dullness"
     ],
-    "Tags": [
-      "Exfoliant",
-      "Acne"
+    "Product Category": [
+      "Acid"
     ],
     "What is it?": [
       "Oil-loving acid that exfolidates skin and penetrates deep into pores dissolving plugs of sebum and dead skin",
@@ -132,11 +147,12 @@
     ]
   },
   {
-    "Name": [
-      "Biotin (Vitamin B7)"
-    ],
-    "Tags": [
+    "Name": "Biotin (Vitamin B7)",
+    "Symptoms": [
       "Anti-aging"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "Nutrient that helps body process fats and sugars while oral biotin is important for regulating hair and nail growth",
@@ -148,11 +164,12 @@
     ]
   },
   {
-    "Name": [
-      "Caffeine"
-    ],
-    "Tags": [
+    "Name": "Caffeine",
+    "Symptoms": [
       "Anti-aging"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "Constricts blood vessel and gives skin a firmer appearance",
@@ -164,11 +181,12 @@
     ]
   },
   {
-    "Name": [
-      "Ceramide"
+    "Name": "Ceramide",
+    "Symptoms": [
+      "Dryness"
     ],
-    "Tags": [
-      "Hydration"
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "Critical component of epidermis that holds skin cells together, forming a protective layer that plumps the skin and retains moisture",
@@ -179,12 +197,12 @@
     ]
   },
   {
-    "Name": [
-      "Charcoal"
-    ],
-    "Tags": [
-      "Mineral",
+    "Name": "Charcoal",
+    "Symptoms": [
       "Acne"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "A carbon that draws bacteria, poisons, chemicals, dirt and other micro-particles to the surface of skin"
@@ -200,12 +218,13 @@
     ]
   },
   {
-    "Name": [
-      "Chemical SPF"
-    ],
-    "Tags": [
+    "Name": "Chemical SPF",
+    "Symptoms": [
       "Anti-aging",
-      "Sun protection"
+      "Sun damage"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "Contains organic (carbon-based) compounds, such as oxybenzone, octinoxate, octisalate and avobenzone, which create a chemical reaction and work by changing UV rays into heat, then releasing that heat from the skin"
@@ -221,13 +240,14 @@
     ]
   },
   {
-    "Name": [
-      "Coenzyme q-10"
-    ],
-    "Tags": [
+    "Name": "Coenzyme q-10",
+    "Symptoms": [
       "Antioxidant",
       "Anti-aging",
       "Sun Damage"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "Fat-soluble compound present in all human cell (aka Ubiquinone)"
@@ -245,12 +265,13 @@
     ]
   },
   {
-    "Name": [
-      "Collagen"
-    ],
-    "Tags": [
+    "Name": "Collagen",
+    "Symptoms": [
       "Anti-aging",
-      "Hydration"
+      "Dryness"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "Naturally contains high concentration of hydroxyproline which serves to increase skin's moisture levels and smoothness",
@@ -262,11 +283,12 @@
     ]
   },
   {
-    "Name": [
-      "Copper"
+    "Name": "Copper",
+    "Symptoms": [
+      ""
     ],
-    "Tags": [
-      "Mineral"
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "Acts as a conveyance carrying nourishing proteins to damaged skin"
@@ -279,12 +301,13 @@
     ]
   },
   {
-    "Name": [
-      "Dimethicone"
-    ],
-    "Tags": [
+    "Name": "Dimethicone",
+    "Symptoms": [
       "Anti-aging",
-      "Hydration"
+      "Dryness"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "Forms a hydrating barrier on skin that helps secure natural moisture from exiting"
@@ -295,11 +318,12 @@
     ]
   },
   {
-    "Name": [
-      "DMAE (Dimethylaminoethanol)"
-    ],
-    "Tags": [
+    "Name": "DMAE (Dimethylaminoethanol)",
+    "Symptoms": [
       "Anti-aging"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "Precursor to acetylcholine, a neurotransmitter that causes muscles to contract and tighten under the skin"
@@ -310,12 +334,21 @@
     ]
   },
   {
-    "Name": [
-      "Ferulic Acid"
+    "Name": "Evening Primrose Oil",
+    "Symptoms": [
+      ""
     ],
-    "Tags": [
-      "Acid",
+    "Product Category": [
+      "Oil"
+    ]
+  },
+  {
+    "Name": "Ferulic Acid",
+    "Symptoms": [
       "Antioxidant"
+    ],
+    "Product Category": [
+      "Acid"
     ],
     "What is it?": [
       "Plant-based antioxidant that naturally occurs in plant-cell walls help keep skin healthy and improve texture & tone"
@@ -339,16 +372,17 @@
     ]
   },
   {
-    "Name": [
-      "Galactomyces"
-    ]
+    "Name": "Galactomyces"
   },
   {
-    "Name": [
-      "Glycolic Acid (AHA)"
+    "Name": "Glycolic Acid (AHA)",
+    "Symptoms": [
+      "Dullness",
+      "Anti-aging"
     ],
-    "Tags": [
-      "Exfoliant"
+    "Product Category": [
+      "Exfoliant",
+      "Acid"
     ],
     "What is it?": [
       "Alpha Hydroxy Acids (AHA) that penetrates damaged skin to stimulate collagen production",
@@ -369,14 +403,15 @@
     ]
   },
   {
-    "Name": [
-      "Hyaluronic Acid (HA)"
+    "Name": "Hyaluronic Acid (HA)",
+    "Symptoms": [
+      "Dryness"
     ],
-    "Tags": [
-      "Hydration"
+    "Product Category": [
+      "Acid"
     ],
     "What is it?": [
-      "A sugary molecule that occurs naturally in skin and helps retain water so skin remains plump",
+      "A molecule that occurs naturally in skin and helps retain water so skin remains plump",
       "Able to boost skin’s moisture content, soothe, and defend against moisture loss"
     ],
     "Key Benefits": [
@@ -384,11 +419,12 @@
     ]
   },
   {
-    "Name": [
-      "Hydroquinone"
-    ],
-    "Tags": [
+    "Name": "Hydroquinone",
+    "Symptoms": [
       "Anti-aging"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "Fades hyperpigmentation by blocking the enzyme that triggers melanin production in the skin"
@@ -398,45 +434,73 @@
     ]
   },
   {
-    "Name": [
-      "Jojoba seed oil"
+    "Name": "Jojoba seed oil",
+    "Symptoms": [
+      "Dryness",
+      "Acne"
     ],
-    "Tags": [
-      "Oil"
+    "Product Category": [
+      "Oil",
+      "Anti-bacterial"
     ],
     "What is it?": [
-      "Similar consistency to sebum and can help dissolve sebaceous secretions off body"
+      "Liquid wax extracted from the seed of the Jojoba plant and has a similar consistency to sebum (natural oils found on face) which helps dissolve sebaceous secretions off body"
     ],
     "Key Benefits": [
-      "Declogs pores with an excess of sebum and control acne when used regularly",
-      "Rich in Vitamin E, zinc, B-complex vitamins to fight signs of aging"
+      "Can trick the skin into thinking it has produced enough oil and thus balance oil production, without promoting acne or other skin problems",
+      "Full of nutrients like Vitamin E and B, as well as antioxidants and minerals like chromium, copper, and zinc, which all nourish and protect skin & reduce signs of aging",
+      "Naturally deters microbes, which helps prevent the growth of bacteria on skin and helps those with acne & scarring problems",
+      "Penetrates deep into hair follicles and breaks down sebum & debris that has built up on the scalp"
+    ],
+    "Side Effects": [
+      "None"
+    ],
+    "When / How to Wear?": [
+      ""
+    ],
+    "Who can use it?": [
+      ""
+    ],
+    "Extra Credit": [
+      "Organic, cold-pressed, jojoba oil has the highest level of antioxidants and nutrients",
+      "Very stable oil, with a shelf life of up to two years"
     ]
   },
   {
-    "Name": [
-      "Kojic Acid"
+    "Name": "Kojic Acid",
+    "Symptoms": [
+      "Sun damage"
     ],
-    "Tags": [
+    "Product Category": [
       "Acid"
     ],
     "What is it?": [
-      "Inhibits melanin production by blocking tyrosinase (enzyme)"
+      "Chemical derived from mushrooms and can also be created during the sake brewing process from fermented rice"
     ],
     "Key Benefits": [
       "Lightens skin discoloration such as age & dark spots, freckles"
     ],
     "Side Effects": [
-      ""
+      "Can irritate skin if you have sensitive skin. Start with low concentrations and build up dose and frequency."
     ],
     "When / How to Wear?": [
-      "Causes sun sensitivity so use with SPF or at night"
+      "Causes sun sensitivity so use with SPF or at night",
+      "Mainly should be used to fade discoloration that wasn't originally on your skin (e.g. age spots, sun spots, or post-breakout marks)"
+    ],
+    "Who can use it?": [
+      ""
+    ],
+    "Extra Credit": [
+      "Unstable and oxidize rapidly. When it is exposed to air, it turns into a shade of brown and loses its efficacy."
     ]
   },
   {
-    "Name": [
-      "Lactic Acid (AHA)"
+    "Name": "Lactic Acid (AHA)",
+    "Symptoms": [
+      "Dullness",
+      "Anti-aging"
     ],
-    "Tags": [
+    "Product Category": [
       "Exfoliant"
     ],
     "What is it?": [
@@ -463,10 +527,41 @@
     ]
   },
   {
-    "Name": [
-      "Malic Acid"
+    "Name": "Macadamia Nut Oil",
+    "Symptoms": [
+      "Dryness",
+      "Rough skin"
     ],
-    "Tags": [
+    "Product Category": [
+      "Oil"
+    ],
+    "What is it?": [
+      "Lightweight oil extracted from macadamia nut that is high in monounsaturated fatty acids"
+    ],
+    "Key Benefits": [
+      "Helps to restore the skin’s barrier function and reduce water loss",
+      "Contains one of the highest sources of Palmitoleic Acid (of all oils) which is an active anti-microbial that is found naturally in youthful skin",
+      "Improve appearance of scars, sunburn and other minor skin irritations"
+    ],
+    "Side Effects": [
+      ""
+    ],
+    "When / How to Wear?": [
+      ""
+    ],
+    "Who can use it?": [
+      ""
+    ],
+    "Extra Credit": [
+      "Very stable oil, with a shelf life of up to two years"
+    ]
+  },
+  {
+    "Name": "Malic Acid",
+    "Symptoms": [
+      ""
+    ],
+    "Product Category": [
       "Acid"
     ],
     "What is it?": [
@@ -478,11 +573,11 @@
     ]
   },
   {
-    "Name": [
-      "Manuka Honey"
+    "Name": "Manuka Honey",
+    "Symptoms": [
+      "Dryness"
     ],
-    "Tags": [
-      "Hydration",
+    "Product Category": [
       "Antioxidant"
     ],
     "What is it?": [
@@ -509,12 +604,13 @@
     ]
   },
   {
-    "Name": [
-      "Niacinamide"
-    ],
-    "Tags": [
-      "Hydration",
+    "Name": "Niacinamide",
+    "Symptoms": [
+      "Dryness",
       "Acne"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "A form of Vitamin B3"
@@ -543,10 +639,11 @@
     ]
   },
   {
-    "Name": [
-      "Pearl"
+    "Name": "Pearl",
+    "Symptoms": [
+      ""
     ],
-    "Tags": [
+    "Product Category": [
       "Antioxidant"
     ],
     "What is it?": [
@@ -564,12 +661,13 @@
     ]
   },
   {
-    "Name": [
-      "Peptides"
-    ],
-    "Tags": [
+    "Name": "Peptides",
+    "Symptoms": [
       "Anti-aging",
       "Tighening"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "As building-blocks for protein such as Collagen, peptides are able to send signals to collagen to prompt formation for youthful, supple skin"
@@ -597,12 +695,13 @@
     ]
   },
   {
-    "Name": [
-      "Physical SPF"
-    ],
-    "Tags": [
+    "Name": "Physical SPF",
+    "Symptoms": [
       "Anti-aging",
-      "Sun protection"
+      "Sun damage"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "Contains Zinc Oxide and Titanium Dioxide which act as physical barriers to UVA and UVB with no wait time needed",
@@ -626,11 +725,12 @@
     ]
   },
   {
-    "Name": [
-      "Pitera"
-    ],
-    "Tags": [
+    "Name": "Pitera",
+    "Symptoms": [
       "Anti-aging"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       ""
@@ -640,22 +740,18 @@
     ]
   },
   {
-    "Name": [
-      "Plant Stem Cells"
-    ]
+    "Name": "Plant Stem Cells"
   },
   {
-    "Name": [
-      "Proniacin"
-    ]
+    "Name": "Proniacin"
   },
   {
-    "Name": [
-      "Resveratrol"
-    ],
-    "Tags": [
-      "Antioxidant",
+    "Name": "Resveratrol",
+    "Symptoms": [
       "Anti-aging"
+    ],
+    "Product Category": [
+      "Antioxidant"
     ],
     "What is it?": [
       "A natual antioxidant compound found in high amounts amongst the skins of grapes and in red wine essential to neutralizing free radicals"
@@ -665,10 +761,11 @@
     ]
   },
   {
-    "Name": [
-      "Retin-A/ Retinoic Acid"
+    "Name": "Retin-A/ Retinoic Acid",
+    "Symptoms": [
+      "Anti-aging"
     ],
-    "Tags": [
+    "Product Category": [
       "Acid"
     ],
     "What is it?": [
@@ -691,14 +788,15 @@
     ]
   },
   {
-    "Name": [
-      "Retinol"
-    ],
-    "Tags": [
+    "Name": "Retinol",
+    "Symptoms": [
       "Anti-aging"
     ],
+    "Product Category": [
+      ""
+    ],
     "What is it?": [
-      "A form of Vitamin A that's been scientifically proven to reduce wrinkles you already have"
+      "A form of Vitamin A that's been scientifically proven to reduce wrinkles you already have and the most easily absorbed by the body"
     ],
     "Key Benefits": [
       "Acts as a protective shield and deflects free radicals from damaging our skin",
@@ -721,18 +819,16 @@
     ],
     "Extra Credit": [
       "Retinol works best at a PH of 5.5-6."
-    ],
-    "Products": [
-      "Peter Thomas Roth Professional Retinol 3%"
     ]
   },
   {
-    "Name": [
-      "Rose hip oil"
-    ],
-    "Tags": [
+    "Name": "Rosehip oil",
+    "Symptoms": [
       "Anti-bacterial",
       "Antioxidant"
+    ],
+    "Product Category": [
+      "Oil"
     ],
     "What is it?": [
       "A natural source of essential fatty acids, Vitamin A, C, E, and B which are vital to regenerating skin cells and repair damaged skin tissue",
@@ -758,11 +854,13 @@
     ]
   },
   {
-    "Name": [
-      "Salicylic Acid (BHA)"
+    "Name": "Salicylic Acid (BHA)",
+    "Symptoms": [
+      ""
     ],
-    "Tags": [
-      "Acid"
+    "Product Category": [
+      "Acid",
+      "Exfoliant"
     ],
     "What is it?": [
       "A lipid-soluble acid that penetrates into oily pores to exfoliate and clean from within"
@@ -779,11 +877,12 @@
     ]
   },
   {
-    "Name": [
-      "Shea Butter"
+    "Name": "Shea Butter",
+    "Symptoms": [
+      "Dryness"
     ],
-    "Tags": [
-      "Hydration"
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       ""
@@ -793,19 +892,18 @@
     ]
   },
   {
-    "Name": [
-      "Snail Mucus"
-    ],
-    "Tags": [
-      "Hydration"
+    "Name": "Snail Mucus",
+    "Symptoms": [
+      "Dryness"
     ]
   },
   {
-    "Name": [
-      "Tea Tree Oil"
-    ],
-    "Tags": [
+    "Name": "Tea Tree Oil",
+    "Symptoms": [
       "Acne"
+    ],
+    "Product Category": [
+      "Oil"
     ],
     "What is it?": [
       "Slightly yellow liquid derived from the Australian plant Malaleuca Alternifolia",
@@ -817,12 +915,13 @@
     ]
   },
   {
-    "Name": [
-      "Vitamin C"
-    ],
-    "Tags": [
+    "Name": "Vitamin C",
+    "Symptoms": [
       "Antioxidant",
       "Anti-aging"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       "An antioxidant by donating electrons in order to neitralize free radicals created in skin after oxidative stress (aka sun damage)"
@@ -853,18 +952,16 @@
       "Tocopherol",
       "Is your Vitamin E, since vitamin C is such a great antioxidant, it reacts with anything & everything since oxidants are everywhere.",
       "Vitamin E prevents this from happening. Do note that this is NOT Tocopheryl Acetate, this converts to vit e in the skin, but in a solution it can't act as Tocopherol which stabilises the vitamin c. Ferulic acid does the same job as vit e as well, so combining the three creates a super stable vitamin c serum.\n\nVitamin C also needs to be at a pH of ~3 and at a concentration >15% to properly penetrate the skin, any higher of a pH and it can't absorb effectively."
-    ],
-    "Products": [
-      "Timeless 20% Vitamin C + E Ferulic Acid Serum \n\nskinceuticals c e ferulic"
     ]
   },
   {
-    "Name": [
-      "Vitamin E"
-    ],
-    "Tags": [
+    "Name": "Vitamin E",
+    "Symptoms": [
       "Antioxidant",
-      "Hydration"
+      "Dryness"
+    ],
+    "Product Category": [
+      ""
     ],
     "What is it?": [
       ""
@@ -880,10 +977,11 @@
     ]
   },
   {
-    "Name": [
-      "Vitamin K"
+    "Name": "Vitamin K",
+    "Symptoms": [
+      ""
     ],
-    "Tags": [
+    "Product Category": [
       "Antioxidant"
     ],
     "What is it?": [
@@ -894,8 +992,13 @@
     ]
   },
   {
-    "Name": [
-      "Evening Primrose Oil"
+    "Name": "Rosemary Essential Oil",
+    "Symptoms": [
+      ""
+    ],
+    "Product Category": [
+      "Oil",
+      "Antioxidant"
     ]
   }
 ]
