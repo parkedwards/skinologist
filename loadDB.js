@@ -1,24 +1,29 @@
 const fs = require('fs');
 const path = require('path');
 const { promisify } = require('util');
+const chalk = require('chalk');
 
+const { log } = console;
 const readFile = promisify(fs.readFile);
 
-require('colors');
+// db stuff
 require('dotenv').config();
-
 const db = require('./server/db');
 
 // tables
 (async () => {
+  // [------------ DROP TABLES (dev) ----------------]
   try {
-    // drop tables ----------------------------------------------|
     // TO DO: REMOVE WHEN DOING LIVE RUN
     await db.query('DROP TABLE ingredients');
     await db.query('DROP TABLE categories');
     await db.query('DROP TABLE ing_cat');
-    // drop tables ----------------------------------------------|
+  } catch (error) {
+    log(chalk.red('<< error dropping tables >>'));
+    log(error);
+  }
 
+  try {
     // transaction to create tables
     await db.query('BEGIN');
     await db.query(`
@@ -83,12 +88,12 @@ const db = require('./server/db');
 
           idStorage.categories[name] = _id; // add to idStorage
 
-          console.log('----------------------------------------->');
-          console.log('category inserted successfully: '.cyan, name.green);
+          log('----------------------------------------->');
+          log(chalk.cyan('category inserted successfully: '), chalk.green(name));
         } catch (error) {
-          console.log('----------------------------------------->');
-          console.log('issue inserting category: '.red, category_cleansed.red);
-          console.log(error);
+          log('----------------------------------------->');
+          log(chalk.red('issue inserting category: '), chalk.red(category_cleansed));
+          log(error);
         }
       })());
 
@@ -132,10 +137,10 @@ const db = require('./server/db');
 
           idStorage.ingredients[name] = _id;
 
-          console.log('----------------------------------------->');
-          console.log('ingredient inserted successfully: '.magenta, name.green);
+          log('----------------------------------------->');
+          log(chalk.magenta('ingredient inserted successfully: '), chalk.green(name));
 
-          // [ --------------- MAPPING --------------- ]
+          // [ --------------- CAT MAPPING --------------- ]
           if (Category && Category[0] !== '') {
             Category.forEach(async cat => {
               const cat_name = normalizeInput(cat, true);
@@ -143,28 +148,29 @@ const db = require('./server/db');
               try {
                 await db.query(`INSERT INTO ing_cat(ing_id, cat_id) VALUES(${_id}, ${cat_id})`);
 
-                console.log('----------------------------------------->');
-                console.log('mapped successfully: '.cyan, `${_id}`.green, `${cat_id}`.yellow);
+                log('-----------------------------------------');
+                log(
+                  chalk.cyan('mapped successfully: '),
+                  chalk.green(`${_id}`),
+                  chalk.yellow(`${cat_id}`),
+                );
               } catch (error) {
-                console.log('----------------------------------------->');
-                console.log('issue mapping: '.magenta, name_cleansed.yellow);
-                console.log(error);
+                log('----------------------------------------->');
+                log(chalk.magenta('issue mapping: '), chalk.yellow(name_cleansed));
+                log(error);
               }
             });
           }
-
-
         } catch (error) {
-          console.log('----------------------------------------->');
-          console.log('issue inserting ingredient: '.yellow, name_cleansed.red);
-          console.log(error);
+          log('----------------------------------------->');
+          log(chalk.yellow('issue inserting ingredient: '), chalk.red(name_cleansed));
+          log(error);
         }
       })());
 
     await Promise.all(ing_inserts);
-
   } catch (error) {
-    // console.log('<----- ERROR with Table Creation ----->'.bold.red);
+    // log('<----- ERROR with Table Creation ----->'.bold.red);
     // await db.query('ROLLBACK');
   }
 })();
