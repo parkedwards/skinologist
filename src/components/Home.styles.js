@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export default styled.div`
   width: 100vw;
   height: 200vh;
 

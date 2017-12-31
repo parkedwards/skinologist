@@ -1,14 +1,14 @@
 import React from 'react';
-import { Wrapper } from './Home.styles';
+import Styles from './Home.styles';
 
 import Splash from './Splash';
 import Search from './Search';
 
 const Home = () => (
-  <Wrapper>
+  <Styles>
     <Splash />
     <Search />
-  </Wrapper>
+  </Styles>
 );
 
 export default Home;
