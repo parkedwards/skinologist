@@ -1,6 +1,5 @@
 const { Pool } = require('pg');
 const config = require('./config');
-const chalk = require('chalk');
 
 const { log } = console;
 
@@ -8,7 +7,7 @@ const pool = new Pool(config);
 
 pool.connect(err => {
   if (err) console.error(err);
-  else log(chalk.black.bgGreen('Connected to SKINOLOGY-DB!'));
+  else log('Connected to SKINOLOGY-DB!');
 });
 
 // refactor to fit query patterns...

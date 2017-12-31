@@ -2,7 +2,6 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const chalk = require('chalk');
 
 const { log } = console;
 require('dotenv').config();
@@ -20,5 +19,5 @@ app.all('*', (req, res) => res.status(404).end('Page Not Found'));
 
 // check out grider's express setup in Lyrical-GraphQL
 app.listen(PORT, () => {
-  log(chalk.bold.bgWhite.blue(`SKINOLOGY is up and running on port ${PORT}`));
+  log(`SKINOLOGY is up and running on port ${PORT}`);
 });
