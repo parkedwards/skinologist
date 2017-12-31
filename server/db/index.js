@@ -1,36 +1,29 @@
-const pg = require('pg');
+const { Pool } = require('pg');
 const config = require('./config');
+const chalk = require('chalk');
 
-const pool = new pg.Pool(config);
+const { log } = console;
+
+const pool = new Pool(config);
 
 pool.connect(err => {
   if (err) console.error(err);
-  else console.log('Connected to SKINOLOGY-DB!');
+  else log(chalk.black.bgGreen('Connected to SKINOLOGY-DB!'));
 });
 
-// pool.query(`
-//   CREATE TABLE IF NOT EXISTS "ingredients_main" (
-//     _id SERIAL PRIMARY KEY,
-//     name VARCHAR(100) UNIQUE,
-//     description JSONB,
-//     benefits JSONB,
-//     how JSONB,
-//     notes JSONB
-//   )
-// `);
-
-// pool.query(`
-//   CREATE TABLE IF NOT EXISTS "ings_cats" (
-//     ing_id INTEGER,
-//     cat_id INTEGER
-//   )
-// `);
-
-// pool.query(`
-//   CREATE TABLE IF NOT EXISTS "categories_main" (
-//     _id SERIAL PRIMARY KEY,
-//     name VARCHAR(100)
-//   )
-// `);
+// refactor to fit query patterns...
+// some issues with async / await.  maybe promisify?
+// module.exports = {
+//   query: async (text, params, callback) => {
+//     const start = Date.now();
+//     return pool.query(text, params, (err, res) => {
+//       const duration = Date.now() - start;
+//       // log(chalk.blue('executed query >>'), { text, duration, rows: res.rowCount });
+//       if (callback) {
+//         callback(err, res);
+//       }
+//     });
+//   },
+// };
 
 module.exports = pool;
