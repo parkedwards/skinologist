@@ -20,3 +20,9 @@ export const search_term = () => async (dispatch, getState, api) => {
     // something to handle this error
   }
 };
+
+export const fetch_details = ing_id => async (dispatch, getState, api) => {
+  try {
+    const { data } = await api.fetchDetails(ing_id);
+  } catch (error) {}
+};
