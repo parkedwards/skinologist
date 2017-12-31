@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { flex } from '../utils/style-helpers';
 
-export const Wrapper = styled.div`
+export default styled.div`
   height: 50%;
   width: 100%;
   ${flex('column', 'center', 'center')};

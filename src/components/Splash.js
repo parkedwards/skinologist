@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Wrapper } from './Splash.styles';
+import Styles from './Splash.styles';
 
 class Splash extends Component {
   static onScrollClick = () => {
@@ -9,7 +9,7 @@ class Splash extends Component {
 
   render() {
     return (
-      <Wrapper>
+      <Styles>
         <i className="material-icons" id="hamburger-menu">
           menu
         </i>
@@ -26,7 +26,7 @@ class Splash extends Component {
         >
           keyboard_arrow_down
         </i>
-      </Wrapper>
+      </Styles>
     );
   }
 }

@@ -12,7 +12,7 @@ const fadeInFromTop = keyframes`
   }
 `;
 
-export const Wrapper = styled.div`
+export default styled.div`
   background-color: #c4dfd8;
   height: 50%;
   width: 100%;
@@ -56,6 +56,7 @@ export const Wrapper = styled.div`
     ${media.mobile`
     font-size: 45px;
     bottom: 5px;
+    outline: none;
   `};
   }
 `;

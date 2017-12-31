@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 
-import { Wrapper, MainInput } from './Search.styles';
+import Styles, { MainInput } from './Search.styles';
 
 import ResultList from './ResultList';
 import { update_search_field, search_term } from '../actions/search';
 
 // consider using materialize Input CSS + customize the colors
 const Search = props => (
-  <Wrapper id="search-section">
+  <Styles id="search-section">
     <MainInput
       id="main-input"
       type="text"
@@ -20,7 +20,7 @@ const Search = props => (
       placeholder="SEARCH"
     />
     <ResultList results={props.matches} search={props.search} />
-  </Wrapper>
+  </Styles>
 );
 
 const mapStateToProps = state => {
