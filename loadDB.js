@@ -14,7 +14,7 @@ const db = require('./server/db');
 (async () => {
   // [------------ DROP TABLES (dev) ----------------]
   try {
-    // TO DO: REMOVE WHEN DOING LIVE RUN
+    // {{TODO:}} REMOVE WHEN DOING LIVE RUN
     await db.query('DROP TABLE ingredients');
     await db.query('DROP TABLE categories');
     await db.query('DROP TABLE ing_cat');
