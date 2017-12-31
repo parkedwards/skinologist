@@ -59,7 +59,7 @@ async function queryDB(req, res, next) {
   if (!res.locals.ingredients) {
     // query db
     log(chalk.magenta('[ -------- QUERYING postgres FOR INGREDIENTS  -------- ]'));
-    const { rows } = await db.query('SELECT * FROM ingredients');
+    const { rows } = await db.query('SELECT _id, name FROM ingredients');
     const stringPayload = JSON.stringify(rows);
 
     // cache results
