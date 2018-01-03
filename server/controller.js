@@ -15,8 +15,27 @@ const Sifter = require('sifter');
 const { log } = console;
 
 async function queryIngById(req, res) {
-  const { rows: { 0: data } } = await db.query(`SELECT * FROM ingredients WHERE _id=${req.params.id}`);
-  return res.status(200).json(data);
+  const ID = req.params.id;
+  log(chalk.cyan('[ -------- FETCHING Ingredient ID: '), chalk.red(ID), chalk.cyan(' -------- ]'));
+
+  const { rows: { 0: results } } = await db.query(`
+    SELECT *
+    FROM ingredients i
+    LEFT JOIN (
+        SELECT
+          m.ing_id as ing_id,
+          array_to_json(array_agg(c)) as mapped_cats
+        FROM categories c 
+        JOIN ing_cat m ON m.cat_id = c._id
+        GROUP BY 1
+        ) cm
+    ON i._id = cm.ing_id
+    WHERE i._id = ${ID};
+  `);
+
+  console.log(results);
+
+  return res.status(200).json(results);
 }
 
 function fetchItemsFromCache(req, res, next) {
