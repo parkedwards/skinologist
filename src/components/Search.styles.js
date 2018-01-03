@@ -13,4 +13,8 @@ export const MainInput = styled.input`
   font-size: 50px;
   border-bottom: 3px solid #c4dfd8;
   text-align: center;
+
+  @media (max-width: 650px) {
+    width: 80%;
+  }
 `;

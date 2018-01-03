@@ -9,9 +9,6 @@ class ResultList extends Component {
   };
 
   renderResults = () => {
-    // {{ TODO: }}
-    // result array will look diff, with ID info etc.
-    // make sure to map properly when that is in place
     const { results } = this.props;
     return results.map(result => (
       <li key={result.name}>

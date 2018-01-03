@@ -27,7 +27,7 @@ export default styled.div`
     user-select: none;
 
     ${media.mobile`
-    font-size: 45px;
+      font-size: 45px;
   `};
   }
 
@@ -41,7 +41,7 @@ export default styled.div`
     color: white;
 
     ${media.mobile`
-    font-size: 45px;
+      font-size: 45px;
   `};
   }
 
@@ -53,10 +53,15 @@ export default styled.div`
     margin: auto;
     font-size: 55px;
     cursor: pointer;
+
+    &:focus {
+      outline: 0;
+    }
+
     ${media.mobile`
-    font-size: 45px;
-    bottom: 5px;
-    outline: none;
+      font-size: 45px;
+      bottom: 5px;
+      outline: none;
   `};
   }
 `;
