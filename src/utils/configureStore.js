@@ -4,10 +4,12 @@ import thunk from 'redux-thunk'; // maybe swap for sagas at some point
 import api from './api';
 
 import ui from '../reducers/ui';
+import ingredient from '../reducers/ingredient';
 
 const configureStore = () => {
   const rootReducer = combineReducers({
     ui,
+    ingredient,
   });
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

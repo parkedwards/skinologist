@@ -1,4 +1,4 @@
-import { UPDATE_SEARCH_FIELD, ACCEPT_SEARCH_RESULTS } from './';
+import { UPDATE_SEARCH_FIELD, ACCEPT_SEARCH_RESULTS, RECEIVE_INGREDIENT_DETAIL } from './';
 
 export const update_search_field = value => ({
   type: UPDATE_SEARCH_FIELD,
@@ -21,8 +21,15 @@ export const search_term = () => async (dispatch, getState, api) => {
   }
 };
 
-export const fetch_details = ing_id => async (dispatch, getState, api) => {
+export const fetch_details = id => async (dispatch, getState, api) => {
   try {
-    const { data } = await api.fetchDetails(ing_id);
-  } catch (error) {}
+    const { data: { ing_id, ...details } } = await api.fetchDetails(id);
+
+    dispatch({
+      type: RECEIVE_INGREDIENT_DETAIL,
+      details,
+    });
+  } catch (error) {
+    throw Error(error);
+  }
 };
