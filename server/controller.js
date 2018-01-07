@@ -19,6 +19,19 @@ async function queryIngById(req, res) {
   const ID = req.params.id;
   log(chalk.cyan('[ --- FETCHING Ingredient ID: '), chalk.red(ID), chalk.cyan(' --- ]'));
 
+
+  // SELECT *
+  //   FROM ingredients i
+  //   LEFT JOIN (
+  //       SELECT
+  //         m.ing_id as ing_id,
+  //         array_to_json(array_agg(c)) as mapped_cats
+  //       FROM categories c 
+  //       JOIN ing_cat m ON m.cat_id = c._id
+  //       GROUP BY 1
+  //       ) cm
+  //   ON i._id = cm.ing_id
+  //   WHERE i._id = ${ID};
   const { rows: { 0: results } } = await db.query(`
     SELECT *
     FROM ingredients i
@@ -26,11 +39,18 @@ async function queryIngById(req, res) {
         SELECT
           m.ing_id as ing_id,
           array_to_json(array_agg(c)) as mapped_cats
-        FROM categories c 
-        JOIN ing_cat m ON m.cat_id = c._id
+        FROM categories c JOIN ing_cat m ON m.cat_id = c._id
         GROUP BY 1
         ) cm
     ON i._id = cm.ing_id
+    LEFT JOIN (
+        SELECT
+          m.ing_id as ing_id,
+          array_to_json(array_agg(s)) as mapped_cats
+        FROM symptoms s JOIN ing_sympt m ON m.sympt_id = s._id
+        GROUP BY 1
+        ) sm
+    ON i._id = sm.ing_id
     WHERE i._id = ${ID};
   `);
 
