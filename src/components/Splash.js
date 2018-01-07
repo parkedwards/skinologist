@@ -7,6 +7,8 @@ class Splash extends Component {
     el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 
+  // if you want to put an image as background...USE 35% overlay black
+  // for text to pop
   render() {
     return (
       <Styles>
