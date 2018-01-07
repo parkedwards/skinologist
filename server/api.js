@@ -12,6 +12,10 @@ const api = new Router();
 //   console.log('inside of GET /ingredients');
 // });
 
+api.get('/categories/:id', (req, res) => {
+  console.log('inside of GET CATEGORIES');
+});
+
 api.get(
   '/details/:id',
   (req, res, next) => {
