@@ -16,9 +16,13 @@ class Tile extends Component {
   renderContent = () => {
     // what if data is null?
     const { data } = this.props;
-    if (!data) return <div>None</div>;
+    if (!data) return <div className="content-row">None</div>;
 
-    return data.map(d => <div key={d} className="content-row">{d}</div>);
+    return data.map(d => (
+      <div key={d} className="content-row">
+        {d}
+      </div>
+    ));
   };
 
   render() {
