@@ -2,11 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+
+import Styles from './IngredientDetail.styles';
+import Tile from './Tile';
 import { fetch_details } from '../actions/search';
+import { sections } from '../utils/constants';
 
 class IngredientDetail extends Component {
   static propTypes = {
-    params: PropTypes.shape({}).isRequired,
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }).isRequired,
+    ingredient: PropTypes.shape({
+      _id: PropTypes.number,
+      name: PropTypes.string,
+      what_is_it: PropTypes.array,
+      mapped_cats: PropTypes.array,
+    }).isRequired,
     onPageLoad: PropTypes.func.isRequired,
   };
 
@@ -15,37 +27,46 @@ class IngredientDetail extends Component {
     onPageLoad(ing_id);
   };
 
+  renderTiles = () => {
+    const { _id, mapped_cats, ...data } = this.props.ingredient;
+    return (
+      <div id="tile-container">
+        {sections.map(o => {
+          const props = {
+            display: o.display,
+            data: data[o.key],
+            icon: o.icon,
+          };
+
+          return <Tile key={o.key} {...props} />;
+        })}
+      </div>
+    );
+  };
+
   render() {
     const {
       _id,
       name,
-      what_is_it,
-      key_benefits,
-      side_effects,
-      how_to_wear,
-      who_can_use,
-      mapped_cats,
+      mapped_cats, // create separate categories tile
     } = this.props.ingredient;
 
     if (!_id) {
       // placholder - create good spinner
       return <span>Loading...</span>;
     }
+
     return (
-      <div>
+      <Styles>
         <Link to="/">Back</Link>
-        <h2>{name.toUpperCase()}</h2>
-        {mapped_cats && (
-          <div>
-            <h3>Categories:</h3>
-            {mapped_cats.map(cat => <div>{cat.name}</div>)}
-          </div>
-        )}
-      </div>
+        <h1>{name.toUpperCase()}</h1>
+        {this.renderTiles()}
+      </Styles>
     );
   }
 }
 
+// maybe just use local state
 const mapStateToProps = ({ ingredient }) => ({
   ingredient,
 });
