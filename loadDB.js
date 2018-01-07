@@ -18,6 +18,8 @@ const db = require('./server/db');
     await db.query('DROP TABLE ingredients');
     await db.query('DROP TABLE categories');
     await db.query('DROP TABLE ing_cat');
+    await db.query('DROP TABLE symptoms');
+    await db.query('DROP TABLE ing_sympt');
   } catch (error) {
     log(chalk.red('<< error dropping tables >>'));
     log(error);
@@ -51,6 +53,21 @@ const db = require('./server/db');
         cat_id INTEGER
       )
     `);
+
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS symptoms (
+        _id SERIAL PRIMARY KEY,
+        name VARCHAR(80)
+      )
+    `);
+
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS ing_sympt (
+        _id SERIAL PRIMARY KEY,
+        ing_id INTEGER,
+        sympt_id INTEGER
+      )
+    `);
     await db.query('COMMIT');
 
     // [------------ START INSERTS ----------------]
@@ -61,16 +78,17 @@ const db = require('./server/db');
     const idStorage = {
       ingredients: {},
       categories: {},
+      symptoms: {},
     };
 
     // [ --------------- CATEGORIES --------------- ]
-    const preFormatted = data
+    const preformattedCategories = data
       .map(ing => ing['Product Category'] || null)
       .filter(arr => arr != null && arr[0] !== '')
       .reduce((arr, chunk) => [...arr, ...chunk], []);
 
     // unique categories
-    const categories = Array.from(new Set(preFormatted));
+    const categories = Array.from(new Set(preformattedCategories));
     const cat_inserts = categories.map(categoryName =>
       (async () => {
         const category_cleansed = normalizeInput(categoryName, true);
@@ -98,6 +116,40 @@ const db = require('./server/db');
       })());
 
     await Promise.all(cat_inserts);
+
+    // [ --------------- SYMPTOMS --------------- ]
+    const preformattedSymptoms = data
+      .map(ing => ing.Symptoms || null)
+      .filter(arr => arr != null && arr[0] !== '')
+      .reduce((arr, chunk) => [...arr, ...chunk], [])
+      .map(s => normalizeInput(s, true));
+
+    // unique symptoms
+    const symptoms = Array.from(new Set(preformattedSymptoms));
+    const sympt_inserts = symptoms.map(symptomName =>
+      (async () => {
+        const query = `
+          INSERT INTO symptoms(name) SELECT '${symptomName}'
+          WHERE NOT EXISTS (
+            SELECT name FROM symptoms WHERE name = '${symptomName}'
+          )
+          RETURNING *;
+        `;
+
+        try {
+          const { rows } = await db.query(query);
+          const { name, _id } = rows[0];
+          idStorage.symptoms[name] = _id; // add to idStorage
+          log('----------------------------------------->');
+          log(chalk.green('symptom inserted successfully: '), chalk.cyan(name));
+        } catch (error) {
+          log('----------------------------------------->');
+          log(chalk.red('issue inserting symptom: '), chalk.magenta(symptomName));
+          log(error);
+        }
+      })());
+
+    await Promise.all(sympt_inserts);
 
     // [ --------------- INGREDIENTS --------------- ]
     const ing_inserts = data.map(ing =>
@@ -150,9 +202,32 @@ const db = require('./server/db');
 
                 log('-----------------------------------------');
                 log(
-                  chalk.cyan('mapped successfully: '),
+                  chalk.cyan('category mapped successfully: '),
                   chalk.green(`${_id}`),
                   chalk.yellow(`${cat_id}`),
+                );
+              } catch (error) {
+                log('----------------------------------------->');
+                log(chalk.magenta('issue mapping: '), chalk.yellow(name_cleansed));
+                log(error);
+              }
+            });
+          }
+
+          // [ --------------- SYMPTOM MAPPING --------------- ]
+          if (Symptoms && Symptoms[0] !== '') {
+            Symptoms.forEach(async symptom => {
+              const sympt_name = normalizeInput(symptom, true);
+              const symptom_id = idStorage.symptoms[sympt_name];
+
+              try {
+                await db.query(`INSERT INTO ing_sympt(ing_id, sympt_id) VALUES(${_id}, ${symptom_id})`);
+
+                log('-----------------------------------------');
+                log(
+                  chalk.black.bgCyan('symptom mapped successfully: '),
+                  chalk.green(`${_id}`),
+                  chalk.yellow(`${symptom_id}`),
                 );
               } catch (error) {
                 log('----------------------------------------->');
