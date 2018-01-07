@@ -18,7 +18,7 @@ export default styled.div`
       font-size: 14px;
       width: 100%;
       box-sizing: border-box;
-      padding: 0 5px;
+      padding: 0 7px;
       border: 1px solid white;
     `};
   }

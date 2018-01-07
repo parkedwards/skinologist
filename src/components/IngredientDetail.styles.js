@@ -12,6 +12,8 @@ export default styled.div`
   #tile-container {
     ${media.mobile`
       padding: 0 25px;
+      width: 100%;
+      box-sizing: border-box;
     `}
   }
 `;
