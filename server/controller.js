@@ -5,6 +5,7 @@ const { REDIS_URL } = process.env;
 const redis_client = redis.createClient(REDIS_URL);
 
 // handle redis exceptions
+// {{ TODO: }} how to keep process running if redis can't connect?
 redis_client.on('error', err => {
   console.log(`Error ${err}`);
 });
@@ -16,7 +17,7 @@ const { log } = console;
 
 async function queryIngById(req, res) {
   const ID = req.params.id;
-  log(chalk.cyan('[ -------- FETCHING Ingredient ID: '), chalk.red(ID), chalk.cyan(' -------- ]'));
+  log(chalk.cyan('[ --- FETCHING Ingredient ID: '), chalk.red(ID), chalk.cyan(' --- ]'));
 
   const { rows: { 0: results } } = await db.query(`
     SELECT *
@@ -33,7 +34,7 @@ async function queryIngById(req, res) {
     WHERE i._id = ${ID};
   `);
 
-  console.log(results);
+  log(results);
 
   return res.status(200).json(results);
 }
@@ -42,9 +43,13 @@ function fetchItemsFromCache(req, res, next) {
   const ingredientsList = 'ingredientsList';
 
   redis_client.get(ingredientsList, (err, cachedData) => {
-    if (err) console.log(err); // it's ok to pass through to query DB if error with redis retrieve
+    if (err) {
+      log(chalk.red('[ --- ERROR fetching from redis  --- ]'));
+      log(err); // it's ok to pass through to query DB if error with redis retrieve
+    }
+
     if (cachedData != null) {
-      log(chalk.green('[ -------- FETCHING ingredients FROM REDIS  -------- ]'));
+      log(chalk.green('[ --- FETCHING ingredients FROM REDIS  --- ]'));
       res.locals.ingredients = cachedData;
     }
 
@@ -55,12 +60,12 @@ function fetchItemsFromCache(req, res, next) {
 async function queryIngredientsDB(req, res, next) {
   if (!res.locals.ingredients) {
     // query db
-    log(chalk.magenta('[ -------- QUERYING postgres FOR INGREDIENTS  -------- ]'));
-    const { rows } = await db.query('SELECT _id, name FROM ingredients');
+    log(chalk.magenta('[ --- QUERYING postgres FOR INGREDIENTS  --- ]'));
+    const { rows } = await db.query('SELECT _id, name, symptoms FROM ingredients');
     const stringPayload = JSON.stringify(rows);
 
     // cache results
-    log(chalk.blue('[ -------- RE-CACHING query results  -------- ]'));
+    log(chalk.blue('[ --- RE-CACHING query results...  --- ]'));
     redis_client.setex('ingredientsList', 3600, stringPayload);
 
     // add payload to 'locals' key of response cycle
@@ -76,11 +81,11 @@ function searchAndSend(req, res) {
 
   const searchTerm = req.query.term;
 
-  log(chalk.yellow('[ -------- Instantiating Sifter  -------- ]'));
+  log(chalk.yellow('[ --- Instantiating Sifter  --- ]'));
   // can you move this Sifter instantiation so that you don't have to do it every time?
   const sifter = new Sifter(parsedData);
   const { items: scores } = sifter.search(searchTerm, {
-    fields: ['name'],
+    fields: ['name', 'symptoms'],
     sort: [{ field: 'name', direction: 'asc' }],
     conjunction: 'and',
     limit: 100,
