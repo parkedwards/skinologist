@@ -13,7 +13,6 @@ const fadeInFromTop = keyframes`
 `;
 
 export default styled.div`
-  background-color: #c4dfd8;
   height: 50%;
   width: 100%;
   ${flex('row', 'center', 'center')};

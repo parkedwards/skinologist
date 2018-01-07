@@ -10,11 +10,19 @@ export default styled.div`
 export const MainInput = styled.input`
   outline: none;
   border: none;
-  font-size: 50px;
-  border-bottom: 3px solid #c4dfd8;
-  text-align: center;
+  border-bottom: 3px solid white;
+  text-align: left;
+  font-size: 25px;
+  background-color: transparent;
+  color: #606060;
+  
+  ::placeholder {
+    color: #606060;
+    font-size: 15px;
+  }
 
   ${media.mobile`
+    font-size: 25px;
     width: 80%;
   `};
 `;
