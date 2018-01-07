@@ -5,6 +5,7 @@ if (process.env.NODE_ENV === 'development') {
   BASE_URL = 'http://localhost:3000/api';
 } else {
   // add production endpoint here
+  BASE_URL = '/api';
 }
 
 export default {
