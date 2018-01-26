@@ -1,19 +1,35 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { flex, media } from '../utils/style-helpers';
 
 export default styled.div`
+  margin: 25px 0;
   ${media.mobile`
     margin: 25px 0;
   `};
 
   .header-wrap {
+    ${flex('row', 'space-between', 'center')};
+    margin: 3px 0;
+    
     ${media.mobile`
-      ${flex('row', 'space-between', 'center')};
-      margin: 3px 0;
+    `};
+  }
+
+  .tile-header {
+    font-size: 20px;
+    font-weight: bold;
+    ${media.mobile`
+      font-size: 16px;
     `};
   }
 
   .content-wrap {
+    font-size: 17px;
+    ${'' /* width: 100%; */}
+    box-sizing: border-box;
+    padding: 0 7px;
+    border: 1px solid white;
+
     ${media.mobile`
       font-size: 14px;
       width: 100%;
@@ -24,6 +40,7 @@ export default styled.div`
   }
 
   .content-row {
+    margin: 12px 0;
     ${media.mobile`
       margin: 12px 0;
     `};

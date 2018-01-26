@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { flex, media } from '../utils/style-helpers';
 
 export default styled.div`
@@ -6,7 +6,7 @@ export default styled.div`
   font-family: Lato;
   font-weight: normal;
 
-  background-color: #222222;
+  ${'' /* background-color: #222222; */}
   color: white;
 
   #tile-container {
