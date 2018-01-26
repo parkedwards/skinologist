@@ -32,24 +32,6 @@ export const MainInput = styled.input`
   color: transparent;
   text-shadow: 0 0 0 white;
 
-  &:focus {
-    ${'' /* border: 3px solid #83e0ae; */}
-    background: #83e0ae;
-  }
-
-  ${props =>
-    props.value.length > 0 &&
-    `
-    transform: translateY(-250px);
-  `};
-
-  ::placeholder {
-    color: white;
-    font-size: 25px;
-    font-weight: normal;
-    line-height: 1.5;
-  }
-
   ${media.mobile`
     font-size: 25px;
     padding: 10px;
@@ -58,19 +40,35 @@ export const MainInput = styled.input`
     font-weight: 400;
     
     border: 2px solid white;
-    
-    &:focus {
+  `};
+
+  &:focus {
+    border: 3px solid #83e0ae;
+    background: #83e0ae;
+
+    ${media.mobile`
       border: 2px solid #83E0AE;
-    }
+    `};
+  }
 
-    ::placeholder {
-      font-size: 20px;
-    }
-
-    ${props =>
+  ${props =>
     props.value.length > 0 &&
-      `
+    `
+    transform: translateY(-250px);
+
+    ${media.mobile`
       transform: translateY(-50px);
+    `}
   `};
-  `};
+
+  ::placeholder {
+    color: white;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 1.5;
+
+    ${media.mobile`
+      font-size: 20px;
+    `};
+  }
 `;
