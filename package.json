@@ -2,6 +2,19 @@
   "name": "skinologist",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "9.2.0"
+  },
+  "now": {
+    "type": "npm",
+    "alias": [
+      "my-skinologist"
+    ],
+    "dotenv": true,
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
   "dependencies": {
     "axios": "^0.17.1",
     "babel-eslint": "^8.0.2",
@@ -34,7 +47,8 @@
     "styled-components": "^2.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/index.js",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
