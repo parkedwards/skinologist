@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class ResultList extends Component {
   static propTypes = {
@@ -25,7 +25,13 @@ class ResultList extends Component {
     }
 
     return (
-      <ul style={{ fontFamily: 'Shadows Into Light Two', fontSize: '20px', textAlign: 'center' }}>
+      <ul
+        style={{
+          fontFamily: 'Shadows Into Light Two',
+          fontSize: '20px',
+          textAlign: 'center',
+        }}
+      >
         {this.renderResults()}
       </ul>
     );
