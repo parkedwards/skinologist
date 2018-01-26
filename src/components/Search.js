@@ -39,7 +39,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onFieldUpdate(e) {
       const { target: { value } } = e;
-      dispatch(update_search_field(value));
+      const cleaned = value.toUpperCase();
+      dispatch(update_search_field(cleaned));
       throttled_search();
     },
   };

@@ -22,7 +22,7 @@ export default styled.div`
     margin: 0;
     font-size: 65px;
     font-weight: lighter;
-    animation: 1s ${fadeInFromTop} ease;
+    animation: 2s ${fadeInFromTop} ease;
     user-select: none;
 
     ${media.mobile`
