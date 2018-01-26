@@ -8,6 +8,7 @@ const readFile = promisify(fs.readFile);
 
 // db stuff
 require('dotenv').config();
+// require('dotenv').config({ path: path.join(__dirname, '/temp.env') });
 const db = require('./server/db');
 
 // tables
