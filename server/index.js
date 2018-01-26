@@ -5,7 +5,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const { log } = console;
-require('dotenv').config();
+const { NODE_ENV } = process.env;
+
+if (NODE_ENV === 'production') {
+  require('dotenv').config();
+} else {
+  require('dotenv').config({ path: path.join(__dirname, '../dev.env') });
+}
 
 const PORT = process.env.PORT || 3000;
 
@@ -16,6 +22,10 @@ app.use('*', cors()); // enable pre-flight CORS
 
 app.use(express.static(path.join(__dirname, '../build')));
 app.use('/api', require('./api'));
+
+app.get('*', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '../build'));
+});
 
 app.all('*', (req, res) => res.status(404).end('Page Not Found'));
 

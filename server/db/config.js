@@ -6,4 +6,5 @@ module.exports = {
   port: process.env.DB_PORT,
   max: 10,
   idleTimeoutMillis: 30000,
+  ssl: process.env.DB_SSL,
 };

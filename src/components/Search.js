@@ -17,7 +17,7 @@ const Search = props => (
       onChange={props.onFieldUpdate}
       value={props.search}
       className="validate"
-      placeholder="look up a symptom or ingredient..."
+      placeholder="enter a symptom or ingredient!"
     />
     <ResultList results={props.matches} search={props.search} />
   </Styles>
