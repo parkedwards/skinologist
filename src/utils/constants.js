@@ -7,3 +7,8 @@ export const sections = [
   { display: 'How to Wear', key: 'how_to_wear', icon: 'lightbulb_outline' },
   { display: 'Who Can Use', key: 'who_can_use', icon: 'person_pin' },
 ];
+
+// helper fn
+export const updateBodyClr = color => {
+  document.body.style.background = color;
+};

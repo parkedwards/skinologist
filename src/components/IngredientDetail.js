@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import { withTheme } from 'styled-components';
 
 import Styles from './IngredientDetail.styles';
 import Tile from './Tile';
 import { fetch_details } from '../actions/search';
-import { sections } from '../utils/constants';
+import { sections, updateBodyClr } from '../utils/constants';
 
 class IngredientDetail extends Component {
   static propTypes = {
-    params: PropTypes.shape({
+    match: PropTypes.shape({
       id: PropTypes.string,
     }).isRequired,
     ingredient: PropTypes.shape({
@@ -23,7 +24,7 @@ class IngredientDetail extends Component {
   };
 
   componentDidMount = () => {
-    const { params: { id: ing_id }, onPageLoad } = this.props;
+    const { match: { params: { id: ing_id } }, onPageLoad } = this.props;
     onPageLoad(ing_id);
   };
 
@@ -56,6 +57,8 @@ class IngredientDetail extends Component {
       return <span>Loading...</span>;
     }
 
+    updateBodyClr(this.props.theme.detailBg); // updates body color
+
     return (
       <Styles>
         <Link to="/">Back</Link>
@@ -75,4 +78,4 @@ const mapDispatchToProps = dispatch => ({
   onPageLoad: id => dispatch(fetch_details(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(IngredientDetail);
+export default withTheme(connect(mapStateToProps, mapDispatchToProps)(IngredientDetail));
