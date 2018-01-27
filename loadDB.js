@@ -7,8 +7,11 @@ const { log } = console;
 const readFile = promisify(fs.readFile);
 
 // db stuff
-require('dotenv').config();
-// require('dotenv').config({ path: path.join(__dirname, '/temp.env') });
+if (process.env.DEV === 'true') {
+  require('dotenv').config({ path: path.join(__dirname, '/dev.env') });
+} else {
+  require('dotenv').config();
+}
 const db = require('./server/db');
 
 // tables
@@ -33,7 +36,6 @@ const db = require('./server/db');
       CREATE TABLE IF NOT EXISTS ingredients (
         _id SERIAL PRIMARY KEY,
         name VARCHAR(80),
-        symptoms JSONB,
         what_is_it JSONB,
         key_benefits JSONB,
         side_effects JSONB,
@@ -169,12 +171,11 @@ const db = require('./server/db');
         const name_cleansed = normalizeInput(Name, true);
 
         const text = `
-          INSERT INTO ingredients(name, symptoms, what_is_it, key_benefits, side_effects, how_to_wear, who_can_use) VALUES ($1, $2, $3, $4, $5, $6, $7)
+          INSERT INTO ingredients(name, what_is_it, key_benefits, side_effects, how_to_wear, who_can_use) VALUES ($1, $2, $3, $4, $5, $6)
           RETURNING *;
         `;
         const values = [
           name_cleansed,
-          normalizeInput(Symptoms),
           normalizeInput(WhatIsIt),
           normalizeInput(Benefits),
           normalizeInput(Effects),
