@@ -5,7 +5,7 @@ export default styled.div`
   height: 50%;
   width: 100%;
   ${flex('column', 'center', 'center')};
-  position: relative;
+
 `;
 
 export const MainInput = styled.input`
