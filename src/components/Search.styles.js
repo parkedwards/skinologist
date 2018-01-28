@@ -64,8 +64,8 @@ export const MainInput = styled.input`
   ::placeholder {
     color: white;
     font-size: 25px;
-    font-weight: normal;
-    line-height: 1.5;
+    font-weight: bold;
+    vertical-align: middle;
 
     ${media.mobile`
       font-size: 20px;
