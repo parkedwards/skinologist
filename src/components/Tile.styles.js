@@ -3,6 +3,7 @@ import { flex, media } from '../utils/style-helpers';
 
 export default styled.div`
   margin: 25px 0;
+  
   ${media.mobile`
     margin: 25px 0;
   `};
@@ -44,5 +45,23 @@ export default styled.div`
     ${media.mobile`
       margin: 12px 0;
     `};
+  }
+
+  .tag-pill {
+    border: 1px solid white;
+    padding: 5px 15px;
+    margin: 5px;
+    background: none;
+    border-radius: 50px;
+    display: inline-flex;
+    user-select: none;
+    transition: all 400ms ease;
+
+    &:hover {
+      color: #222222;
+      background: white;
+    }
+
+
   }
 `;
