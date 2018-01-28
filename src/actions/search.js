@@ -13,7 +13,7 @@ export const search_term = () => async (dispatch, getState, api) => {
   // get field data from state
   const { ui: { search } } = getState();
   try {
-    if (search.length) {
+    if (search.length > 1) {
       const { data: matches } = await api.queryInput(search);
 
       // alphabetically sorted
