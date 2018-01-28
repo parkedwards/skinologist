@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -17,6 +17,7 @@ const Search = props => (
       type="text"
       onChange={props.onFieldUpdate}
       value={props.search}
+      isTextPresent={props.isTextPresent}
       className="validate"
       placeholder="enter a symptom or ingredient!"
     />
@@ -29,6 +30,7 @@ const mapStateToProps = state => {
   return {
     search: ui.search,
     matches: ui.matches,
+    isTextPresent: ui.search.length > 0,
   };
 };
 
@@ -41,6 +43,8 @@ const mapDispatchToProps = dispatch => {
     onFieldUpdate(e) {
       const { target: { value } } = e;
       const cleaned = value.toUpperCase();
+      console.log('-----------------');
+      console.log(cleaned);
       dispatch(update_search_field(cleaned));
       throttled_search();
     },
