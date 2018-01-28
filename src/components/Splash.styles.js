@@ -24,6 +24,7 @@ export default styled.div`
     font-weight: lighter;
     animation: 2s ${fadeInFromTop} ease;
     user-select: none;
+    z-index: 1;
 
     ${media.mobile`
       font-size: 45px;
@@ -52,6 +53,7 @@ export default styled.div`
     margin: auto;
     font-size: 55px;
     cursor: pointer;
+    color: white;
 
     &:focus {
       outline: 0;

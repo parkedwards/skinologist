@@ -9,15 +9,14 @@ import Styles, { MainInput } from './Search.styles';
 import ResultList from './ResultList';
 import { update_search_field, search_term } from '../actions/search';
 
-
 const Search = props => (
   <Styles id="search-section">
+    <div className="splash-overlay" />
     <MainInput
       id="main-input"
       type="text"
       onChange={props.onFieldUpdate}
       value={props.search}
-      matches={props.matches}
       className="validate"
       placeholder="enter a symptom or ingredient!"
     />

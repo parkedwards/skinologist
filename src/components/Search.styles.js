@@ -5,7 +5,6 @@ export default styled.div`
   height: 50%;
   width: 100%;
   ${flex('column', 'center', 'center')};
-
 `;
 
 export const MainInput = styled.input`
@@ -17,13 +16,14 @@ export const MainInput = styled.input`
   font-weight: bold;
   background-color: transparent;
   color: #606060;
+  z-index: 1;
 
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 
-  border: 3px solid white;
-  border-radius: 7px;
+  border: 2px solid white;
+  border-radius: 50px;
   width: 600px;
   height: 70px;
 
@@ -43,17 +43,17 @@ export const MainInput = styled.input`
   `};
 
   &:focus {
-    border: 3px solid #83e0ae;
+    border: 2px solid #83e0ae;
     background: #83e0ae;
+    opacity: 0.7;
 
     ${media.mobile`
-      border: 2px solid #83E0AE;
+      border: 1px solid #83E0AE;
     `};
   }
 
   ${props =>
-    props.matches &&
-    props.matches.length > 0 &&
+    props.value.length > 0 &&
     `
     position: absolute;
     transform: translateY(-300px);
@@ -64,10 +64,11 @@ export const MainInput = styled.input`
   `};
 
   ::placeholder {
-    color: white;
+    color: white !important;
     font-size: 25px;
     font-weight: bold;
     vertical-align: middle;
+    opacity: 1 !important;
 
     ${media.mobile`
       font-size: 20px;

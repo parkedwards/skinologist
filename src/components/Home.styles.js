@@ -3,8 +3,17 @@ import styled from 'styled-components';
 export default styled.div`
   width: 100vw;
   height: 200vh;
-  ${'' /* background-color: #c4dfd8; */}
-
-  font-family: Roboto;
+  ${''} font-family: Roboto;
   text-align: center;
+  background: url('https://s3-us-west-1.amazonaws.com/my-skinologist/contact-lens.png')
+    no-repeat center center fixed;
+  background-size: cover;
+
+  #img-overlay {
+    position: absolute;
+    width: 100%;
+    height: 200vh;
+    background: black;
+    opacity: 0.4;
+  }
 `;

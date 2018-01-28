@@ -7,7 +7,7 @@ import { withTheme } from 'styled-components';
 import Styles from './IngredientDetail.styles';
 import Tile from './Tile';
 import { fetch_details } from '../actions/search';
-import { sections, updateBodyClr } from '../utils/constants';
+import { sections } from '../utils/constants';
 
 class IngredientDetail extends Component {
   static propTypes = {
@@ -56,8 +56,6 @@ class IngredientDetail extends Component {
       // placholder - create good spinner
       return <span>fetching data...</span>;
     }
-
-    updateBodyClr(this.props.theme.detailBg); // updates body color
 
     return (
       <Styles>
