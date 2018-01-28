@@ -1,39 +1,51 @@
 const redis = require('redis');
+const chalk = require('chalk');
 const db = require('./db');
 
+const { log } = console;
 const { REDIS_URL } = process.env;
 const redis_client = redis.createClient(REDIS_URL);
 
 // handle redis exceptions
 // {{ TODO: }} how to keep process running if redis can't connect?
 redis_client.on('error', err => {
-  console.log(`Error ${err}`);
+  log(chalk.red('[ --- REDIS CONNECTION ERROR  --- ]'));
+  log(`Error ${err}`);
 });
 
-const chalk = require('chalk');
+redis_client.on('reconnecting', () => {
+  log(chalk.green('[ --- RECONNECTING TO REDIS  --- ]'));
+});
+
 const Sifter = require('sifter');
 
-const { log } = console;
-
+// {{ TODO: }} loop this fetch through redis caching pattern as well
 async function queryIngById(req, res) {
   const ID = req.params.id;
   log(chalk.cyan('[ --- FETCHING Ingredient ID: '), chalk.red(ID), chalk.cyan(' --- ]'));
-
-
   // SELECT *
   //   FROM ingredients i
   //   LEFT JOIN (
   //       SELECT
   //         m.ing_id as ing_id,
   //         array_to_json(array_agg(c)) as mapped_cats
-  //       FROM categories c 
+  //       FROM categories c
   //       JOIN ing_cat m ON m.cat_id = c._id
   //       GROUP BY 1
   //       ) cm
   //   ON i._id = cm.ing_id
   //   WHERE i._id = ${ID};
   const { rows: { 0: results } } = await db.query(`
-    SELECT *
+    SELECT
+      _id,
+      name,
+      what_is_it,
+      sm.mapped_symptoms as symptoms,
+      key_benefits,
+      side_effects,
+      how_to_wear,
+      who_can_use,
+      cm.mapped_cats as categories
     FROM ingredients i
     LEFT JOIN (
         SELECT
@@ -46,7 +58,7 @@ async function queryIngById(req, res) {
     LEFT JOIN (
         SELECT
           m.ing_id as ing_id,
-          array_to_json(array_agg(s)) as mapped_cats
+          array_to_json(array_agg(s)) as mapped_symptoms
         FROM symptoms s JOIN ing_sympt m ON m.sympt_id = s._id
         GROUP BY 1
         ) sm
@@ -81,7 +93,17 @@ async function queryIngredientsDB(req, res, next) {
   if (!res.locals.ingredients) {
     // query db
     log(chalk.magenta('[ --- QUERYING postgres FOR INGREDIENTS  --- ]'));
-    const { rows } = await db.query('SELECT _id, name, symptoms FROM ingredients');
+    const { rows } = await db.query(`
+      SELECT _id, name, mapped_symptoms as symptoms FROM ingredients i
+      LEFT JOIN (
+        SELECT
+          m.ing_id as ing_id,
+          array_to_json(array_agg(s.name)) as mapped_symptoms
+        FROM symptoms s JOIN ing_sympt m ON m.sympt_id = s._id
+        GROUP BY 1
+        ) sm
+      ON i._id = sm.ing_id;
+    `);
     const stringPayload = JSON.stringify(rows);
 
     // cache results
