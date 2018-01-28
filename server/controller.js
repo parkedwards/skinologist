@@ -13,8 +13,8 @@ redis_client.on('error', err => {
   log(`Error ${err}`);
 });
 
-redis_client.on('reconnecting', () => {
-  log(chalk.green('[ --- RECONNECTING TO REDIS  --- ]'));
+redis_client.on('connect', () => {
+  log(chalk.green('[ --- CONNECTED TO REDIS  --- ]'));
 });
 
 const Sifter = require('sifter');
