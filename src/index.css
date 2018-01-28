@@ -1,9 +1,21 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /*reset for mobile browsers */
+
+  font-weight: normal;
 }

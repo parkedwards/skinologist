@@ -23,10 +23,12 @@ export const search_term = () => async (dispatch, getState, api) => {
         return 0;
       });
 
-      dispatch({
-        type: ACCEPT_SEARCH_RESULTS,
-        matches: sorted,
-      });
+      if (sorted.length > 0) {
+        dispatch({
+          type: ACCEPT_SEARCH_RESULTS,
+          matches: sorted,
+        });
+      }
     }
   } catch (error) {
     // something to handle this error

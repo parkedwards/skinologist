@@ -10,6 +10,10 @@ export default styled.div`
   height: 100vh;
   color: white;
 
+  ${media.mobile`
+    height: 100%;
+  `}
+
   #tile-container {
     ${media.mobile`
       padding: 0 25px;
