@@ -61,7 +61,7 @@ class IngredientDetail extends Component {
 
     return (
       <Styles>
-        <Link to="/">Back</Link>
+        <Link to={{ pathname: '/', state: { fromBackBtn: true } }}>Back</Link>
         <h1>{name.toUpperCase()}</h1>
         {this.renderTiles()}
       </Styles>
