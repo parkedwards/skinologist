@@ -34,9 +34,11 @@ class Tile extends Component {
     // --- render pills ---
     if (this.isMappable()) {
       return data.map(d => (
-        <div key={d._id} className="tag-pill">
-          <Link to={`/symptom/${d._id}`}>{d.name}</Link>
-        </div>
+        <Link to={`/symptom/${d._id}`}>
+          <div key={d._id} className="tag-pill">
+            {d.name}
+          </div>
+        </Link>
       ));
     }
 

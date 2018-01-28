@@ -54,7 +54,7 @@ class IngredientDetail extends Component {
 
     if (!_id) {
       // placholder - create good spinner
-      return <span>Loading...</span>;
+      return <span>fetching data...</span>;
     }
 
     updateBodyClr(this.props.theme.detailBg); // updates body color

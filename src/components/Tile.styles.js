@@ -48,20 +48,20 @@ export default styled.div`
   }
 
   .tag-pill {
-    border: 1px solid white;
+    font-weight: bold;
+    border: 2px solid white;
     padding: 5px 15px;
-    margin: 5px;
+    margin: 7px;
     background: none;
     border-radius: 50px;
     display: inline-flex;
     user-select: none;
-    transition: all 400ms ease;
+    transition: all 500ms ease;
 
     &:hover {
       color: #222222;
+      ${'' /* border: 1px solid #81ecec; */}
       background: white;
     }
-
-
   }
 `;
