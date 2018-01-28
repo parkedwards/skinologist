@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { render } from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -28,15 +29,26 @@ const Root = () => (
   </Provider>
 );
 
-// routing
-const App = () => (
-  <div>
-    <Route exact path="/" component={Home} />
-    <Route path="/detail/:id" component={IngredientDetail} />
-    <Route path="/symptom/:id" component={SymptomGrp} />
-    <Route path="/category/:id" component={CategoryGrp} />
-  </div>
-);
+class Routing extends Component {
+  componentDidUpdate = () => {
+    const { location: { state } } = this.props;
+    if (state && state.fromBackBtn) {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  };
+  render() {
+    return (
+      <div>
+        <Route exact path="/" component={Home} />
+        <Route path="/detail/:id" component={IngredientDetail} />
+        <Route path="/symptom/:id" component={SymptomGrp} />
+        <Route path="/category/:id" component={CategoryGrp} />
+      </div>
+    );
+  }
+}
+
+const App = withRouter(Routing);
 
 render(<Root />, document.getElementById('root'));
 registerServiceWorker();
