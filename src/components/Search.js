@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 
@@ -7,6 +8,7 @@ import Styles, { MainInput } from './Search.styles';
 
 import ResultList from './ResultList';
 import { update_search_field, search_term } from '../actions/search';
+
 
 const Search = props => (
   <Styles id="search-section">
@@ -46,7 +48,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search));
 
 // type checking:
 Search.propTypes = {
