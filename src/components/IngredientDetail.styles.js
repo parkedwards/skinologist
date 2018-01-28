@@ -6,7 +6,8 @@ export default styled.div`
   font-family: Lato;
   font-weight: normal;
 
-  ${'' /* background-color: #222222; */}
+  background-color: #222222;
+  height: 100vh;
   color: white;
 
   #tile-container {
