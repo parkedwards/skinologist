@@ -1,4 +1,8 @@
-import { UPDATE_SEARCH_FIELD, ACCEPT_SEARCH_RESULTS, RECEIVE_INGREDIENT_DETAIL } from './';
+import {
+  UPDATE_SEARCH_FIELD,
+  ACCEPT_SEARCH_RESULTS,
+  RECEIVE_INGREDIENT_DETAIL,
+} from './';
 
 export const update_search_field = value => ({
   type: UPDATE_SEARCH_FIELD,
@@ -11,9 +15,17 @@ export const search_term = () => async (dispatch, getState, api) => {
   try {
     if (search.length) {
       const { data: matches } = await api.queryInput(search);
+
+      // alphabetically sorted
+      const sorted = matches.sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      });
+
       dispatch({
         type: ACCEPT_SEARCH_RESULTS,
-        matches,
+        matches: sorted,
       });
     }
   } catch (error) {
