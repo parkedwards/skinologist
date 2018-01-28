@@ -8,7 +8,6 @@ import Styles, { MainInput } from './Search.styles';
 import ResultList from './ResultList';
 import { update_search_field, search_term } from '../actions/search';
 
-// consider using materialize Input CSS + customize the colors
 const Search = props => (
   <Styles id="search-section">
     <MainInput
@@ -16,6 +15,7 @@ const Search = props => (
       type="text"
       onChange={props.onFieldUpdate}
       value={props.search}
+      matches={props.matches}
       className="validate"
       placeholder="enter a symptom or ingredient!"
     />

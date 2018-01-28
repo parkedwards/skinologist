@@ -52,9 +52,11 @@ export const MainInput = styled.input`
   }
 
   ${props =>
-    props.value.length > 0 &&
+    props.matches &&
+    props.matches.length > 0 &&
     `
-    transform: translateY(-250px);
+    position: absolute;
+    transform: translateY(-300px);
 
     ${media.mobile`
       transform: translateY(-50px);
