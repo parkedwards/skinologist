@@ -13,9 +13,9 @@ class ResultList extends Component {
   renderResults = () => {
     const { results } = this.props;
     return results.map(result => (
-      <li key={result.name}>
-        <Link to={`/detail/${result._id}`}>{result.name}</Link>
-      </li>
+      <Link to={`/detail/${result._id}`} key={result.name}>
+        <div className="result-item">{result.name}</div>
+      </Link>
     ));
   };
 
