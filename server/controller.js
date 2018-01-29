@@ -1,13 +1,14 @@
 const redis = require('redis');
 const chalk = require('chalk');
+const Sifter = require('sifter');
 const db = require('./db');
 
 const { log } = console;
+
+// [ -------- REDIS -------- ]
 const { REDIS_URL } = process.env;
 const redis_client = redis.createClient(REDIS_URL);
 
-// handle redis exceptions
-// {{ TODO: }} how to keep process running if redis can't connect?
 redis_client.on('error', err => {
   log(chalk.red('[ --- REDIS CONNECTION ERROR  --- ]'));
   log(`Error ${err}`);
@@ -16,25 +17,19 @@ redis_client.on('error', err => {
 redis_client.on('connect', () => {
   log(chalk.green('[ --- CONNECTED TO REDIS  --- ]'));
 });
+// [ -------- REDIS -------- ]
 
-const Sifter = require('sifter');
+async function symptomGroupById(req, res) {
+  const ID = req.params.id;
+  log(chalk.cyan('[ --- FETCHING Symptom ID: '), chalk.red(ID), chalk.cyan(' --- ]'));
+  
+}
 
 // {{ TODO: }} loop this fetch through redis caching pattern as well
-async function queryIngById(req, res) {
+async function ingredientDetailById(req, res) {
   const ID = req.params.id;
   log(chalk.cyan('[ --- FETCHING Ingredient ID: '), chalk.red(ID), chalk.cyan(' --- ]'));
-  // SELECT *
-  //   FROM ingredients i
-  //   LEFT JOIN (
-  //       SELECT
-  //         m.ing_id as ing_id,
-  //         array_to_json(array_agg(c)) as mapped_cats
-  //       FROM categories c
-  //       JOIN ing_cat m ON m.cat_id = c._id
-  //       GROUP BY 1
-  //       ) cm
-  //   ON i._id = cm.ing_id
-  //   WHERE i._id = ${ID};
+
   const { rows: { 0: results } } = await db.query(`
     SELECT
       _id,
@@ -67,7 +62,9 @@ async function queryIngById(req, res) {
   `);
 
   log(results);
-
+  if (!results) {
+    return res.status(404).end('invalid id');
+  }
   return res.status(200).json(results);
 }
 
@@ -138,9 +135,23 @@ function searchAndSend(req, res) {
   return res.status(200).json(results);
 }
 
+// configurable middleware
+function checkForParamInRequest(location, paramName, error) {
+  return (req, res, next) => {
+    console.log('------------------inside check');
+    const param = req[location][paramName];
+    if (!param) {
+      return res.status(404).end(error);
+    }
+    next();
+  };
+}
+
 module.exports = {
-  queryIngById,
+  symptomGroupById,
+  ingredientDetailById,
   fetchItemsFromCache,
   queryIngredientsDB,
   searchAndSend,
+  checkForParamInRequest,
 };
