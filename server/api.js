@@ -1,9 +1,10 @@
 const { Router } = require('express');
 const {
-  queryIngById,
+  ingredientDetailById,
   fetchItemsFromCache,
   queryIngredientsDB,
   searchAndSend,
+  checkForParamInRequest,
 } = require('./controller');
 
 const api = new Router();
@@ -17,26 +18,22 @@ api.get('/categories/:id', (req, res) => {
 });
 
 api.get(
-  '/details/:id',
-  (req, res, next) => {
-    const ID = req.params.id;
-    if (!ID) {
-      return res.status(404).end('invalid id');
-    }
-    next();
+  '/symptoms/:id',
+  (req, res) => {
+    console.log('inside of GET SYMPTOMS');
   },
-  queryIngById,
+  checkForParamInRequest('params', 'id', 'invalid id'),
+);
+
+api.get(
+  '/details/:id',
+  checkForParamInRequest('params', 'id', 'invalid id'),
+  ingredientDetailById,
 );
 
 api.get(
   '/search/?',
-  (req, res, next) => {
-    const searchTerm = req.query.term;
-    if (!searchTerm) {
-      return res.status(404).end('invalid query');
-    }
-    next();
-  },
+  checkForParamInRequest('query', 'term', 'invalid query'),
   fetchItemsFromCache,
   queryIngredientsDB,
   searchAndSend,
