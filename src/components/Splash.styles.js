@@ -13,6 +13,7 @@ const fadeInFromTop = keyframes`
 `;
 
 export default styled.div`
+  position: relative;
   height: 50%;
   width: 100%;
   ${flex('row', 'center', 'center')};

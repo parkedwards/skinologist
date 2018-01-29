@@ -4,14 +4,13 @@ import { media } from '../utils/style-helpers';
 export default styled.div`
   width: 100vw;
   height: 200vh;
-  ${''} font-family: Roboto;
+  font-family: Roboto;
   text-align: center;
   background: url('https://s3-us-west-1.amazonaws.com/my-skinologist/contact-lens.png')
     no-repeat center center fixed;
   background-size: contain;
   background-color: white;
 
-  ${'' /* ios scroll momentum ?? */}
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 

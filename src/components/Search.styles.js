@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { flex, media } from '../utils/style-helpers';
 
 export default styled.div`
+  position: relative;
   height: 50%;
   width: 100%;
   ${flex('column', 'center', 'center')};
-  position: relative;
 `;
 
 export const MainInput = styled.input`
@@ -32,6 +32,13 @@ export const MainInput = styled.input`
 
   color: transparent;
   text-shadow: 0 0 0 white;
+
+  ${props =>
+    props.isTextPresent > 0 &&
+    ` 
+      position: absolute;
+      transform: translateY(-350px);
+  `};
 
   ${media.mobile`
     font-size: 16px;
@@ -60,13 +67,6 @@ export const MainInput = styled.input`
       border: 1px solid ${props => props.theme.yellow};;
     `};
   }
-
-  ${props =>
-    props.isTextPresent > 0 &&
-    ` 
-      position: absolute;
-      transform: translateY(-350px);
-  `};
 
   ::placeholder {
     color: white !important;
