@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Styles from './Splash.styles';
+import Styles from './styles';
 
 class Splash extends Component {
   static onScrollClick = () => {

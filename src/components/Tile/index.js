@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Styles from './Tile.styles';
+import Styles from './styles';
 
 class Tile extends Component {
   static propTypes = {

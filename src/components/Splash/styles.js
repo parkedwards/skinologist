@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { flex, media } from '../utils/style-helpers';
+import { flex, media } from '../../utils/style-helpers';
 
 const fadeInFromTop = keyframes`
   0% {

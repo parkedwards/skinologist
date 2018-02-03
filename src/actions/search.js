@@ -44,6 +44,7 @@ export const fetch_details = id => async (dispatch, getState, api) => {
       details,
     });
   } catch (error) {
+    // {{ TODO: }} redirect to a 404 route here...
     throw Error(error);
   }
 };

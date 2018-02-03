@@ -1,11 +1,17 @@
 import styled from 'styled-components';
-import { flex, media } from '../utils/style-helpers';
+import { flex, media } from '../../utils/style-helpers';
 
 export default styled.div`
   position: relative;
   height: 50%;
   width: 100%;
   ${flex('column', 'center', 'center')};
+
+  #search-hint {
+    color: white;
+    width: 600px;
+    text-align: left;
+  }
 `;
 
 export const MainInput = styled.input`
@@ -59,12 +65,12 @@ export const MainInput = styled.input`
   `};
 
   &:focus {
-    border: 2px solid ${props => props.theme.yellow};
-    background: ${props => props.theme.yellow};
+    border: 2px solid ${props => props.theme.searchGreen};
+    background: ${props => props.theme.searchGreen};
     opacity: 0.8;
 
     ${media.mobile`
-      border: 1px solid ${props => props.theme.yellow};;
+      border: 1px solid ${props => props.theme.searchGreen};;
     `};
   }
 

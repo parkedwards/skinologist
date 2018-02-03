@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { media } from '../utils/style-helpers';
+import { media } from '../../utils/style-helpers';
 
 export default styled.div`
   width: 100vw;
@@ -23,6 +23,6 @@ export default styled.div`
     width: 100%;
     height: 200vh;
     background: black;
-    opacity: 0.4;
+    opacity: 0.6;
   }
 `;

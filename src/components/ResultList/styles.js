@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex, media } from '../../utils/style-helpers';
+import { flex } from '../../utils/style-helpers';
 
 export default styled.div`
   z-index: 1;

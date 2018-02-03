@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flex, media } from '../utils/style-helpers';
+import { flex, media } from '../../utils/style-helpers';
 
 export default styled.div`
   ${flex('column', 'center', 'center')};

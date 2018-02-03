@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withTheme } from 'styled-components';
 
-import Styles from './IngredientDetail.styles';
-import Tile from './Tile';
-import { fetch_details } from '../actions/search';
-import { sections } from '../utils/constants';
+import Styles from './styles';
+import Tile from './../Tile';
+import { fetch_details } from '../../actions/search';
+import { sections } from '../../utils/constants';
 
 class IngredientDetail extends Component {
   static propTypes = {

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 
-import Styles, { MainInput } from './Search.styles';
+import Styles, { MainInput } from './styles';
 
-import ResultList from './ResultList';
-import { update_search_field, search_term } from '../actions/search';
+import ResultList from '../ResultList';
+import { update_search_field, search_term } from '../../actions/search';
 
 const Search = props => (
   <Styles id="search-section">
@@ -21,6 +21,7 @@ const Search = props => (
       className="validate"
       placeholder="enter a symptom or ingredient!"
     />
+    {!props.isTextPresent && <span id="search-hint">suggestions: vitamin c, dryness, exfoliant</span>}
     <ResultList results={props.matches} search={props.search} />
   </Styles>
 );
@@ -43,8 +44,6 @@ const mapDispatchToProps = dispatch => {
     onFieldUpdate(e) {
       const { target: { value } } = e;
       const cleaned = value.toUpperCase();
-      console.log('-----------------');
-      console.log(cleaned);
       dispatch(update_search_field(cleaned));
       throttled_search();
     },

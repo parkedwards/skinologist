@@ -4,6 +4,5 @@ export default {
   detailBg: '#222222', // grey background for detail page
   searchGreen: '#83e0ae', // off-teal from focusing on search bar
 
-  teal: '#81ecec',
-  yellow: '#fdcb6e'
+  teal: '#81ecec', // for search results
 };
