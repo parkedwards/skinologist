@@ -33,11 +33,15 @@ class Tile extends Component {
     // --- if data is mappable (categories or symptoms) ---
     // --- render pills ---
     if (this.isMappable()) {
-      return data.map(d => (
-        <Link to={`/symptom/${d._id}`} key={d._id}>
-          <div className="tag-pill">{d.name}</div>
-        </Link>
-      ));
+      return (
+        <div>
+          {data.map(d => (
+            <Link to={`/symptom/${d._id}`} key={d._id}>
+              <div className="tag-pill">{d.name}</div>
+            </Link>
+          ))}
+        </div>
+      );
     }
 
     // --- standard string data ---

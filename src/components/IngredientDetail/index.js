@@ -34,19 +34,15 @@ class IngredientDetail extends Component {
 
   renderTiles = () => {
     const { _id, mapped_cats, ...data } = this.props.ingredient;
-    return (
-      <div id="tile-container">
-        {sections.map(o => {
-          const props = {
-            display: o.display,
-            data: data[o.key],
-            icon: o.icon,
-          };
+    return sections.map(o => {
+      const props = {
+        display: o.display,
+        data: data[o.key],
+        icon: o.icon,
+      };
 
-          return <Tile key={o.key} {...props} />;
-        })}
-      </div>
-    );
+      return <Tile key={o.key} {...props} />;
+    });
   };
 
   render() {
@@ -63,9 +59,9 @@ class IngredientDetail extends Component {
 
     return (
       <Styles>
-        <Link to={{ pathname: '/', state: { fromBackBtn: true } }}>Back</Link>
-        <h1>{name.toUpperCase()}</h1>
-        {this.renderTiles()}
+        <Link to={{ pathname: '/', state: { fromBackBtn: true } }}>Back to Search</Link>
+        <h2>{name.toUpperCase()}</h2>
+        <div id="tile-container">{this.renderTiles()}</div>
       </Styles>
     );
   }
