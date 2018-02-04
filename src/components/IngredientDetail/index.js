@@ -24,8 +24,12 @@ class IngredientDetail extends Component {
   };
 
   componentDidMount = () => {
-    const { match: { params: { id: ing_id } }, onPageLoad } = this.props;
-    onPageLoad(ing_id);
+    const { match: { params: { id: ing_id } }, onPageLoad, ingredient } = this.props;
+
+    // don't refetch if this is the ingredient in our store already
+    if (`${ingredient._id}` !== ing_id) {
+      onPageLoad(ing_id);
+    }
   };
 
   renderTiles = () => {
