@@ -22,7 +22,7 @@ class ResultList extends Component {
   render() {
     const { results, search } = this.props;
     if (!results.length) {
-      // if (search.length > 1) return '???';
+      // some loader
       return null;
     }
 
