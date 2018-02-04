@@ -11,5 +11,7 @@ if (process.env.NODE_ENV === 'development') {
 export default {
   queryInput: term => $.get(`${BASE_URL}/search/?term=${term}`),
   fetchDetails: id => $.get(`${BASE_URL}/details/${id}`),
-  fetchCategory: id => {},
+  fetchIngredientList: () => {},
+  fetchCategoryList: id => {},
+  fetchSymptomList: id => $.get(`${BASE_URL}/symptoms/${id}`),
 };
