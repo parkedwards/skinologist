@@ -22,7 +22,35 @@ redis_client.on('connect', () => {
 async function symptomGroupById(req, res) {
   const ID = req.params.id;
   log(chalk.cyan('[ --- FETCHING Symptom ID: '), chalk.red(ID), chalk.cyan(' --- ]'));
-  
+
+  const { rows } = await db.query(`
+    SELECT
+      s._id as symptom_id,
+      s.name as symptom_name,
+      i._id as ingredient_id,
+      i.name as ingredient_name
+    FROM symptoms s
+    JOIN ing_sympt l ON l.sympt_id = s._id
+    JOIN ingredients i ON i._id = l.ing_id
+    WHERE s._id = ${ID}
+    ORDER BY ingredient_name ASC;
+  `); // returns array of ingredients, but each has the same symptom id + name
+
+  if (!rows.length) {
+    return res.status(404).end('invalid id');
+  }
+
+  const { symptom_id, symptom_name } = rows[0];
+  const group_members = rows.map(ing => {
+    const { ingredient_id, ingredient_name } = ing;
+    return { ingredient_id, ingredient_name };
+  });
+
+  return res.status(200).json({
+    _id: symptom_id,
+    name: symptom_name,
+    group_members,
+  });
 }
 
 // {{ TODO: }} loop this fetch through redis caching pattern as well
@@ -61,7 +89,6 @@ async function ingredientDetailById(req, res) {
     WHERE i._id = ${ID};
   `);
 
-  log(results);
   if (!results) {
     return res.status(404).end('invalid id');
   }
@@ -138,7 +165,6 @@ function searchAndSend(req, res) {
 // configurable middleware
 function checkForParamInRequest(location, paramName, error) {
   return (req, res, next) => {
-    console.log('------------------inside check');
     const param = req[location][paramName];
     if (!param) {
       return res.status(404).end(error);
