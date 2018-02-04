@@ -10,11 +10,12 @@ const {
 
 const api = new Router();
 
+// request ingredients that have category_id 'xx'
 api.get('/categories/:id', (req, res) => {
   console.log('inside of GET CATEGORIES');
 });
 
-// request ingredients that have symptom_id 'xy'
+// request ingredients that have symptom_id 'xx'
 api.get(
   '/symptoms/:id',
   checkForParamInRequest('params', 'id', 'invalid id'),
