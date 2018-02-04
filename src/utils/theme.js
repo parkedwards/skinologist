@@ -7,7 +7,7 @@ export default {
   teal: '#81ecec', // for search results
 
   // for alternate black contrast
-  bunker: '#151515',
-  mediumTurqoise: '#4CDBBA',
-  monsoon: '#757778',
+  bunker: '#151515', // grey background
+  mediumTurqoise: '#4CDBBA', // turquoise on hover
+  monsoon: '#757778', // non-focused text color
 };
