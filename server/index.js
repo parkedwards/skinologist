@@ -21,14 +21,15 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }), bodyParser.json());
 app.use('*', cors()); // enable pre-flight CORS
 
-// app.use(express.static(path.join(__dirname, '../build')));
 app.use('/api', require('./api'));
 
-app.get('*', (request, response) => {
-  response.sendFile(path.resolve(__dirname, '../build'));
+app.use(express.static(path.join(__dirname, '../build')));
+
+app.all('*', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '../build', 'index.html'));
 });
 
-app.all('*', (req, res) => res.status(404).end('Page Not Found'));
+// app.all('*', (req, res) => res.status(404).end('Page Not Found'));
 
 // check out grider's express setup in Lyrical-GraphQL
 app.listen(PORT, () => {
