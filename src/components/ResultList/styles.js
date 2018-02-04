@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { flex } from '../../utils/style-helpers';
 
 export default styled.div`
+  ${flex('column', 'flex-start', 'center')};
   z-index: 1;
   color: white;
   font-size: 23px;
-  ${flex('column', 'flex-start', 'center')};
   flex-wrap: wrap;
   flex-flow: column wrap;
   max-height: 500px;
